@@ -1,0 +1,146 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: CenturyGothicRegular;
+  src: url(assets/fonts/CenturyGothicRegular.woff);
+}
+@font-face {
+  font-family: CenturyGothic-Bold;
+  src: url(assets/fonts/CenturyGothic-Bold.woff);
+}
+@font-face {
+  font-family: CenturyGothic-Italic;
+  src: url(assets/fonts/CenturyGothic-Italic.woff);
+}
+@font-face {
+  font-family: CenturyGothic-BoldItalic;
+  src: url(assets/fonts/CenturyGothic-BoldItalic.woff);
+}
+* {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  .rounded-box {
+    font-family: CenturyGothic-Bold;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    text-align: center;
+    border: 1px #666666 solid;
+    border-radius: 5px;
+    word-break: break-all;
+    padding: 3px;
+    min-height: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .green {
+    color: #fff;
+    background: #39B54A;
+    background: linear-gradient(to top, #009245, #39B54A);
+  }
+  .yellow {
+    color: #383838;
+    background: #D9E021;
+    background: linear-gradient(to top, #D9E021, #8CC63F);
+  }
+  body {
+    background: #848383;
+    font-family: CenturyGothicRegular;
+    font-size: 1.0em;
+    wrapper-page-algoviz {
+      background: #C4C4C4;
+      display: block;
+      width: 1024px;
+      min-width: 800px;
+      height: 100%;
+      border-left: 1px solid #808080;
+      border-right: 1px solid #808080;
+      margin: 0 auto;
+      border-radius: 5px;
+      h1 {
+        height: 9%;
+        margin: 0 0 1% 0;
+        min-height: 30px;
+      }
+      h2 {
+        height: 5%;
+      }
+      wrapper-content {
+        padding: 1%;
+        left-column,
+        center-column,
+        right-column {
+          display: inline-block;
+          vertical-align: top;
+          min-height: 10%;
+        }
+        left-column {
+          width: 25%;
+        }
+        center-column {
+          width: 42%;
+        }
+        right-column {
+          width: 30%;
+        }
+        left-column div,
+        center-column div,
+        right-column div {
+          display: block;
+          width: 99%;
+          margin: 0 auto .5em auto;
+          background: #fff;
+          border: 1px solid #666666;
+          border-radius: 5px;
+          content-part {
+            width: 93%;
+            height: 100%;
+            min-height: 30px;
+            display: block;
+            margin: 10px auto 10px auto;
+            text-align: justify;
+            font-size: 0.9em;
+            .method-item {
+              display: flex;
+              font-family: CenturyGothic-Bold;
+              font-size: 0.8em;
+              justify-content: center;
+              align-items: center;
+              width: 90%;
+              padding: 10px;
+              color: #383838;
+              background: #999999;
+              background: linear-gradient(to top, #E6E6E6, #999999);
+            }
+            .active {
+              color: #383838;
+              background: #FBB03B;
+              background: linear-gradient(to top, #F47B25, #FBB03B);
+            }
+            marker-list {
+              display: block;
+              width: 24px;
+              height: 24px;
+              background: #CECECE;
+              border: 1px solid #808080;
+              border-radius: 20px;
+            }
+            red-text {
+              color: red;
+              font-family: CenturyGothic-Bold;
+            }
+            counter-part{
+              display: block;
+              text-align: center;
+              font-family: CenturyGothic-Bold;
+              font-size: 0.8em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
