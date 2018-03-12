@@ -19,6 +19,11 @@
   padding: 0;
   border: 0;
   margin: 0;
+  h3{
+    text-align: center;
+    font-family: CenturyGothic-Bold;
+    font-size: 1.1em;
+  }
   .rounded-box {
     font-family: CenturyGothic-Bold;
     text-transform: uppercase;
@@ -79,6 +84,39 @@
         }
         center-column {
           width: 42%;
+          p {
+            margin: 0 0 1% 0;
+          }
+          element-circle-grey {
+            display: block;
+            background: url(assets/img/svg/element-circle-grey.svg) no-repeat;
+            background-size: contain;
+            height: 28px;
+            width: 28px;
+            border-radius: 20px;
+            value-item{
+              display: block;
+              font-family: CenturyGothic-Bold;
+              font-size: 1.2em;
+              line-height: 28px;
+              text-align: center;
+            }
+          }
+          element-circle-blue{
+            display: block;
+            background: url(assets/img/svg/element-circle-blue.svg) no-repeat;
+            background-size: contain;
+            height: 28px;
+            width: 28px;
+            border-radius: 20px;
+            value-item{
+              display: block;
+              font-family: CenturyGothic-Bold;
+              font-size: 1.2em;
+              line-height: 28px;
+              text-align: center;
+            }
+          }
         }
         right-column {
           width: 30%;
@@ -109,22 +147,31 @@
               width: 90%;
               padding: 10px;
               color: #383838;
-              background: #999999;
-              background: linear-gradient(to top, #E6E6E6, #999999);
-            }
+              background: linear-gradient(to top, #7b7b7b, #a0a0a0);
+              text-block{
+                width: 84%;
+                word-wrap: break-word;
+                text-align: center;
+              }
+              marker-list {
+                display: block;
+                width: 24px;
+                height: 24px;
+                background: #CECECE;
+                background: url(assets/img/svg/arrow_down_grey.svg) no-repeat;
+                background-size: contain;
+                left: 29%;
+              }
+              }
             .active {
               color: #383838;
               background: #FBB03B;
               background: linear-gradient(to top, #F47B25, #FBB03B);
+              marker-list {
+                background: url(assets/img/svg/arrow_right_red.svg) no-repeat;
+              }
             }
-            marker-list {
-              display: block;
-              width: 24px;
-              height: 24px;
-              background: #CECECE;
-              border: 1px solid #808080;
-              border-radius: 20px;
-            }
+
             red-text {
               color: red;
               font-family: CenturyGothic-Bold;
@@ -135,6 +182,14 @@
               font-family: CenturyGothic-Bold;
               font-size: 0.8em;
             }
+          }
+          .methods {
+            overflow-y: scroll;
+            height: 40vh;
+          }
+          .description {
+            overflow-y: scroll;
+            height: 40vh;
           }
         }
       }
