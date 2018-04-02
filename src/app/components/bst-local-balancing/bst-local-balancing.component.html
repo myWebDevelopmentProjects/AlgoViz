@@ -1,71 +1,89 @@
 <wrapper-page-algoviz>
-  <h1 class="rounded-box green">Визуализация алгоритмов локальной балансировки BST-дерева</h1>
+  <h1 class="rounded-box green main-title">ВІЗУАЛІЗАЦІЯ АЛГОРИТМІВ ЛОКАЛЬНОГО БАЛАНСУВАННЯ BST-ДЕРЕВА</h1>
   <wrapper-content>
-    <left-column>
-      <div>
-        <h2 class="rounded-box yellow">МЕТОДЫ</h2>
-        <content-part class="methods">
-          <div class="method-item active">
-            <text-block>BST_Balance(t)</text-block>
-            <marker-list></marker-list></div>
-          <div class="method-item">
-              <text-block>BST_Balance(t)</text-block>
-              <marker-list></marker-list>
-          </div>
-          <div class="method-item">
-            <text-block>BST_Balance(t)</text-block>
-            <marker-list></marker-list>
-          </div>
-          <div class="method-item">
-            <text-block>BST_Balance(t)</text-block>
-            <marker-list></marker-list>
-          </div>
-          <div class="method-item">
-            <text-block>BST_Balance(t)</text-block>
-            <marker-list></marker-list>
-          </div>
-        </content-part>
-      </div>
-      <div>
-        <h2 class="rounded-box yellow">ОПИСАНИЕ</h2>
-        <content-part class="description">
-          <p>У BST-деревьев два основных недостатка – значительный объем дополнительной памяти для связей в дереве и возможность
-            вырождения дерева в список.</p>
-          <p>Рассмотрим способы ба-лансировки дерева, снижающие эффект вырождения деревьев в худших
-            случаях. Очень часто дерево формируют элементы упорядоченного файла, или файла с большим числом
-            дублированных ключей. В этом случае построение дерева будет занимать квадратичное время, а поиск - линейное время</p>
-
-        </content-part>
-      </div>
-    </left-column>
-    <center-column>
-      <div>
-        <h2 class="rounded-box yellow">дерево двоичного поиска (bst)</h2>
-        <content-part>
-          <p>Элементы</p>
-          <element-circle-grey>
-            <value-item>9</value-item>
-          </element-circle-grey>
-          <h3>Корень</h3>
-          <element-circle-blue>
-            <value-item>6</value-item>
-          </element-circle-blue>
-        </content-part>
-      </div>
-    </center-column>
-    <right-column>
-      <div>
-        <h2 class="rounded-box yellow"><!-- МЕТОДЫ--></h2>
-        <content-part>
-        </content-part>
-      </div>
-      <div>
-        <h2 class="rounded-box yellow">КОММЕНТАРИЙ К КОДУ</h2>
-        <content-part>
-          <p>Рекурсинонный вызов функции <red-text>BST_Balance(t)</red-text> с аргументом левое поддерева</p>
-          <counter-part><p>Шаг №3 из 10</p></counter-part>
-        </content-part>
-      </div>
-    </right-column>
+    <top-part>
+      <left-column>
+        <item-nav class="rounded-box yellow">
+          <arrow-left></arrow-left><text-part>ПОВЕРНУТИСЬ</text-part>
+        </item-nav>
+        <items-wrapper>
+          <h2 class="rounded-box item-title yellow">ОПЕРАЦІЇ НАД ЕЛЕМЕНТАМИ BST</h2>
+          <methods-list class="methods">
+            <method-item class="active">
+              <symbol-add></symbol-add><text-part class="_14pt">Додати елемент</text-part>
+            </method-item>
+            <method-item class="active">
+              <symbol-remove></symbol-remove><text-part class="_14pt">Видалити елемент</text-part>
+            </method-item>
+          </methods-list>
+        </items-wrapper>
+        <items-wrapper>
+          <h2 class="rounded-box item-title yellow">МЕТОДИ ЛОКАЛЬНОГО БАЛАНСУВАННЯ</h2>
+          <methods-list class="methods">
+            <method-item class="active">
+              <symbol-tool></symbol-tool><text-part class="_14pt">Рандомізація =></text-part>
+            </method-item>
+            <method-item class="active">
+              <symbol-tool></symbol-tool><text-part class="_14pt">Амортизація =></text-part>
+            </method-item>
+            <method-item class="active">
+              <symbol-tool></symbol-tool><text-part class="_14pt">Оптимізація =></text-part>
+            </method-item>
+          </methods-list>
+        </items-wrapper>
+        </left-column>
+        <right-column>
+        <h2 class="rounded-box column-title yellow">ДЕРЕВО ДВІЙКОГОВО ПОШУКУ - BST</h2>
+        <items-wrapper>
+          <items-start>
+            <strong>Елементи:</strong>
+            <item-node>0</item-node>
+            <item-node>1</item-node>
+            <item-node>2</item-node>
+            <item-node>3</item-node>
+            <item-node>4</item-node>
+            <item-node>5</item-node>
+            <item-node>6</item-node>
+            <item-node>7</item-node>
+            <item-node>8</item-node>
+            <item-node>9</item-node>
+            <item-node>10</item-node>
+            <item-node>11</item-node>
+            <item-node>12</item-node>
+            <item-node>13</item-node>
+            <item-node>14</item-node>
+            <item-node>15</item-node>
+            <item-node>16</item-node>
+            <item-node>17</item-node>
+            <item-node>18</item-node>
+            <item-node>19</item-node>
+            <item-node>20</item-node>
+          </items-start>
+          <bst-items>
+            <item-node id="bst_item_0">0</item-node>
+            <item-node id="bst_item_1">1</item-node>
+            <item-node id="bst_item_2">2</item-node>
+            <item-node id="bst_item_3">3</item-node>
+            <item-node id="bst_item_4">4</item-node>
+            <item-node id="bst_item_5">5</item-node>
+            <item-node id="bst_item_6">6</item-node>
+            <item-node id="bst_item_7">7</item-node>
+            <item-node id="bst_item_8">8</item-node>
+            <item-node id="bst_item_9">9</item-node>
+            <item-node id="bst_item_10">10</item-node>
+            <item-node id="bst_item_11">11</item-node>
+            <item-node id="bst_item_12">12</item-node>
+            <item-node id="bst_item_13">13</item-node>
+            <item-node id="bst_item_14">14</item-node>
+            <item-node id="bst_item_15">15</item-node>
+            <item-node id="bst_item_16">16</item-node>
+            <item-node id="bst_item_17">17</item-node>
+            <item-node id="bst_item_18">18</item-node>
+            <item-node id="bst_item_19">19</item-node>
+            <item-node id="bst_item_20">20</item-node>
+          </bst-items>
+        </items-wrapper>
+      </right-column>
+    </top-part>
   </wrapper-content>
 </wrapper-page-algoviz>
