@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-bst-local-balancing',
@@ -12,12 +13,15 @@ export class BstLocalBalancingComponent implements OnInit {
   BST_MAX_ITEMS = 30;
   state: any[] = [];
 
+  pseudoCodeContainer = [];
+
   playingMode = 'nonstop';
   itemsStart = [];
   bstItems: any = [];
 
   constructor(
-    private router: Router) {
+    private router: Router,
+    private http: HttpClient) {
     let i = 0;
     while (i <= this.BST_MAX_START_ITEMS) {
       const item = { display: 'inline-block', id: i, value: '' + i };
@@ -32,6 +36,15 @@ export class BstLocalBalancingComponent implements OnInit {
     }
   }
 
+  getPseudocode(url: string) {
+    const headers = new Headers();
+    headers.append('Accept', 'application/xml');
+
+    return this.http.get(url, {
+      // headers: headers
+    }).map(res => console.log(res));
+
+  }
   ngOnInit() {
   }
 

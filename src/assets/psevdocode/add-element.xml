@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<code-part>
+  <![CDATA[
+  <ol>
+    <li><blue-color>if</blue-color>&nbsp;<formula-name>data</formula-name>(New_Elem) < <formula-name>data</formula-name>(Current) <blue-color>then</blue-color></li>
+    <li>&nbsp;&nbsp;&nbsp;<formula-name>left</formula-name>(Current) &larr; <green-color>call</green-color>  <formula-name>Insert_Tree234</formula-name>( <formula-name>left</formula-name>( Current ), New_Elem, <blue-color>FALSE</blue-color>)</li>
+    <li>&nbsp;&nbsp;&nbsp;<blue-color>if</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>( Current ) <blue-color>and</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>( <formula-name>left</formula-name>( Current )) <blue-color>and</blue-color><em>flag</em> <blue-color>then</blue-color></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Current  &larr;
+      <green-color>call</green-color>
+      <formula-name>Rotation_R</formula-name>( Current )</li>
+    <li>
+      <blue-color>&nbsp;&nbsp;&nbsp;if</blue-color>
+      <green-color>call</green-color>
+      <formula-name>Indication</formula-name>(
+      <formula-name>left</formula-name>(Current)) <blue-color>and</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>(<formula-name>left</formula-name>(<formula-name>left</formula-name>(Current)))  <blue-color>then</blue-color></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>Current</formula-name>  &larr; <green-color>call</green-color> <formula-name>Rotation_R</formula-name>(Current) </li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>color</formula-name>(Current)  &larr; BLACK</li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>сolor</formula-name>(<formula-name>right</formula-name>(Current))  &larr;  RED</li>
+    <li><blue-color>else</blue-color></li>
+    <li>&nbsp;&nbsp;&nbsp;<formula-name>right</formula-name>(Current)  &larr;<green-color>call</green-color> <formula-name>Insert_Tree234</formula-name>(<formula-name>right</formula-name>(Current),  New_Elem, <blue-color>TRUE</blue-color>)
+      flag  &larr;<green-color>call</green-color> <formula-name>Inversion</formula-name>( flag )    </li>
+    <li>&nbsp;&nbsp;&nbsp;<blue-color>if</blue-color> <green-color>call</green-color> <formula-name>Indication</formula-name>(Current)  <blue-color>and</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>( <formula-name>right</formula-name>(Current)) <blue-color>and</blue-color> <em>flag</em>  <blue-color>then</blue-color></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>Current</formula-name>  &larr; <green-color>call</green-color> <formula-name>Rotation_L</formula-name>(Current)</li>
+    <li>&nbsp;&nbsp;&nbsp;<blue-color>if</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>(<formula-name>right</formula-name>(Current)) <blue-color>and</blue-color><green-color>call</green-color> <formula-name> Indication</formula-name>(<formula-name>right</formula-name>(<formula-name>right</formula-name>(Current)))  <blue-color>then</blue-color></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>Current</formula-name>  &larr; <green-color>call</green-color> <formula-name>Rotation_L</formula-name>(Current)</li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>color</formula-name>(Current)  &larr; BLACK    </li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>сolor</formula-name>(<formula-name>left</formula-name>(Current))  &larr;  RED</li>
+    <li><blue-color>return</blue-color> Current</li>
+  </ol>
+  ]]>
+</code-part>
