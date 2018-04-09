@@ -1,0 +1,21 @@
+code-part {
+  font-size:10pt;
+  font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+  display: block;
+  overflow: scroll;
+  height: 220px;
+  padding: 0 0 0 20px;
+  blue-color {
+    color:#2D25DD;
+    font-weight:bold;
+  }
+  green-color {
+    color:#2BA650;
+    font-weight:bold;
+  }
+  formula-name{
+    color:black;
+    font-weight:bold;
+  }
+
+}

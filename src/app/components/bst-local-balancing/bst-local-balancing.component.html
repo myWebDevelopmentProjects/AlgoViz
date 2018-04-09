@@ -3,31 +3,31 @@
   <wrapper-content>
     <top-part>
       <left-column>
-        <item-nav class="rounded-box yellow">
+        <item-nav class="rounded-box yellow" (click)="RouteStart()">
           <arrow-left></arrow-left><text-part>ПОВЕРНУТИСЬ</text-part>
         </item-nav>
         <items-wrapper>
           <h2 class="rounded-box item-title yellow">ОПЕРАЦІЇ НАД ЕЛЕМЕНТАМИ BST</h2>
           <methods-list class="methods">
-            <method-item class="active">
-              <symbol-add></symbol-add><text-part class="_14pt">Додати елемент</text-part>
+            <method-item class="active" (click)="AddElement()">
+              <symbol-add></symbol-add><text-part class="_11pt">Додати елемент</text-part>
             </method-item>
-            <method-item class="active">
-              <symbol-remove></symbol-remove><text-part class="_14pt">Видалити елемент</text-part>
+            <method-item class="active" (click)="RemoveElement()">
+              <symbol-remove></symbol-remove><text-part class="_11pt">Видалити елемент</text-part>
             </method-item>
           </methods-list>
         </items-wrapper>
         <items-wrapper>
           <h2 class="rounded-box item-title yellow">МЕТОДИ ЛОКАЛЬНОГО БАЛАНСУВАННЯ</h2>
           <methods-list class="methods">
-            <method-item class="active">
-              <symbol-tool></symbol-tool><text-part class="_14pt">Рандомізація =></text-part>
+            <method-item class="active" (click)="BalanceRandom()">
+              <symbol-tool></symbol-tool><text-part class="_11pt">Рандомізація =></text-part>
             </method-item>
-            <method-item class="active">
-              <symbol-tool></symbol-tool><text-part class="_14pt">Амортизація =></text-part>
+            <method-item class="active" (click)="BalanceAmortization()">
+              <symbol-tool></symbol-tool><text-part class="_11pt">Амортизація =></text-part>
             </method-item>
-            <method-item class="active">
-              <symbol-tool></symbol-tool><text-part class="_14pt">Оптимізація =></text-part>
+            <method-item class="active" (click)="BalanceOptimization()">
+              <symbol-tool></symbol-tool><text-part class="_11pt">Оптимізація =></text-part>
             </method-item>
           </methods-list>
         </items-wrapper>
@@ -37,136 +37,95 @@
         <items-wrapper>
           <items-start>
             <strong>Елементи:</strong>
-            <item-node>0</item-node>
-            <item-node>1</item-node>
-            <item-node>2</item-node>
-            <item-node>3</item-node>
-            <item-node>4</item-node>
-            <item-node>5</item-node>
-            <item-node>6</item-node>
-            <item-node>7</item-node>
-            <item-node>8</item-node>
-            <item-node>9</item-node>
-            <item-node>10</item-node>
-            <item-node>11</item-node>
-            <item-node>12</item-node>
-            <item-node>13</item-node>
-            <item-node>14</item-node>
-            <item-node>15</item-node>
-            <item-node>16</item-node>
-            <item-node>17</item-node>
-            <item-node>18</item-node>
-            <item-node>19</item-node>
-            <item-node>20</item-node>
+            <item-node
+              *ngFor="let item of itemsStart; let i = index;"
+              [style.display]="item.display">
+              {{ item.value}}
+            </item-node>
           </items-start>
           <bst-items>
-            <item-node id="bst_item_0">0</item-node>
-            <item-node id="bst_item_1">1</item-node>
-            <item-node id="bst_item_2">2</item-node>
-            <item-node id="bst_item_3">3</item-node>
-            <item-node id="bst_item_4">4</item-node>
-            <item-node id="bst_item_5">5</item-node>
-            <item-node id="bst_item_6">6</item-node>
-            <item-node id="bst_item_7">7</item-node>
-            <item-node id="bst_item_8">8</item-node>
-            <item-node id="bst_item_9">9</item-node>
-            <item-node id="bst_item_10">10</item-node>
-            <item-node id="bst_item_11">11</item-node>
-            <item-node id="bst_item_12">12</item-node>
-            <item-node id="bst_item_13">13</item-node>
-            <item-node id="bst_item_14">14</item-node>
-            <item-node id="bst_item_15">15</item-node>
-            <item-node id="bst_item_16">16</item-node>
-            <item-node id="bst_item_17">17</item-node>
-            <item-node id="bst_item_18">18</item-node>
-            <item-node id="bst_item_19">19</item-node>
-            <item-node id="bst_item_20">20</item-node>
-            <item-node id="bst_item_21">21</item-node>
-            <item-node id="bst_item_22">22</item-node>
-            <item-node id="bst_item_23">23</item-node>
-            <item-node id="bst_item_24">24</item-node>
-            <item-node id="bst_item_25">25</item-node>
-            <item-node id="bst_item_26">26</item-node>
-            <item-node id="bst_item_27">27</item-node>
-            <item-node id="bst_item_28">28</item-node>
-            <item-node id="bst_item_29">29</item-node>
-            <item-node id="bst_item_30">30</item-node>
-
-
-
-
+            <item-node
+              *ngFor="let item of bstItems; let i = index;"
+              [style.display]="item.display" id="bst_item_{{ i }}">{{ item.value}}</item-node>
           </bst-items>
         </items-wrapper>
       </right-column>
     </top-part>
-    <miidle-part>
+    <middle-part>
       <left-column>
         <h2 class="rounded-box column-title yellow">Додати елемент</h2>
-        <items-wrapper>
-          <items-start>
-            <strong>Елементи:</strong>
-            <item-node>0</item-node>
-            <item-node>1</item-node>
-            <item-node>2</item-node>
-            <item-node>3</item-node>
-            <item-node>4</item-node>
-            <item-node>5</item-node>
-            <item-node>6</item-node>
-            <item-node>7</item-node>
-            <item-node>8</item-node>
-            <item-node>9</item-node>
-            <item-node>10</item-node>
-            <item-node>11</item-node>
-            <item-node>12</item-node>
-            <item-node>13</item-node>
-            <item-node>14</item-node>
-            <item-node>15</item-node>
-            <item-node>16</item-node>
-            <item-node>17</item-node>
-            <item-node>18</item-node>
-            <item-node>19</item-node>
-            <item-node>20</item-node>
-          </items-start>
-          <bst-items>
-            <item-node id="bst_item_0">0</item-node>
-            <item-node id="bst_item_1">1</item-node>
-            <item-node id="bst_item_2">2</item-node>
-            <item-node id="bst_item_3">3</item-node>
-            <item-node id="bst_item_4">4</item-node>
-            <item-node id="bst_item_5">5</item-node>
-            <item-node id="bst_item_6">6</item-node>
-            <item-node id="bst_item_7">7</item-node>
-            <item-node id="bst_item_8">8</item-node>
-            <item-node id="bst_item_9">9</item-node>
-            <item-node id="bst_item_10">10</item-node>
-            <item-node id="bst_item_11">11</item-node>
-            <item-node id="bst_item_12">12</item-node>
-            <item-node id="bst_item_13">13</item-node>
-            <item-node id="bst_item_14">14</item-node>
-            <item-node id="bst_item_15">15</item-node>
-            <item-node id="bst_item_16">16</item-node>
-            <item-node id="bst_item_17">17</item-node>
-            <item-node id="bst_item_18">18</item-node>
-            <item-node id="bst_item_19">19</item-node>
-            <item-node id="bst_item_20">20</item-node>
-            <item-node id="bst_item_21">21</item-node>
-            <item-node id="bst_item_22">22</item-node>
-            <item-node id="bst_item_23">23</item-node>
-            <item-node id="bst_item_24">24</item-node>
-            <item-node id="bst_item_25">25</item-node>
-            <item-node id="bst_item_26">26</item-node>
-            <item-node id="bst_item_27">27</item-node>
-            <item-node id="bst_item_28">28</item-node>
-            <item-node id="bst_item_29">29</item-node>
-            <item-node id="bst_item_30">30</item-node>
-
-
-
-
-          </bst-items>
-        </items-wrapper>
+        <code-part>
+          <ol>
+            <li><blue-color>if</blue-color><formula-name>data</formula-name>(New_Elem) < <formula-name>data</formula-name>(Current) <blue-color>then</blue-color></li>
+            <li>&nbsp;&nbsp;&nbsp;<formula-name>left</formula-name>(Current) &larr; <green-color>call</green-color>  <formula-name>Insert_Tree234</formula-name>( <formula-name>left</formula-name>( Current ), New_Elem, <blue-color>FALSE</blue-color>)</li>
+            <li>&nbsp;&nbsp;&nbsp;<blue-color>if</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>( Current ) <blue-color>and</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>( <formula-name>left</formula-name>( Current )) <blue-color>and</blue-color><em>flag</em> <blue-color>then</blue-color></li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Current  &larr;
+              <green-color>call</green-color>
+              <formula-name>Rotation_R</formula-name>( Current )</li>
+            <li>
+              <blue-color>&nbsp;&nbsp;&nbsp;if</blue-color>
+              <green-color>call</green-color>
+              <formula-name>Indication</formula-name>(
+              <formula-name>left</formula-name>(Current)) <blue-color>and</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>(<formula-name>left</formula-name>(<formula-name>left</formula-name>(Current)))  <blue-color>then</blue-color></li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>Current</formula-name>  &larr; <green-color>call</green-color> <formula-name>Rotation_R</formula-name>(Current) </li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>color</formula-name>(Current)  &larr; BLACK</li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>сolor</formula-name>(<formula-name>right</formula-name>(Current))  &larr;  RED</li>
+            <li><blue-color>else</blue-color></li>
+            <li>&nbsp;&nbsp;&nbsp;<formula-name>right</formula-name>(Current)  &larr;<green-color>call</green-color> <formula-name>Insert_Tree234</formula-name>(<formula-name>right</formula-name>(Current),  New_Elem, <blue-color>TRUE</blue-color>)
+              flag  &larr;<green-color>call</green-color> <formula-name>Inversion</formula-name>( flag )    </li>
+            <li>&nbsp;&nbsp;&nbsp;<blue-color>if</blue-color> <green-color>call</green-color> <formula-name>Indication</formula-name>(Current)  <blue-color>and</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>( <formula-name>right</formula-name>(Current)) <blue-color>and</blue-color> <em>flag</em>  <blue-color>then</blue-color></li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>Current</formula-name>  &larr; <green-color>call</green-color> <formula-name>Rotation_L</formula-name>(Current)</li>
+            <li>&nbsp;&nbsp;&nbsp;<blue-color>if</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>(<formula-name>right</formula-name>(Current)) <blue-color>and</blue-color><green-color>call</green-color> <formula-name> Indication</formula-name>(<formula-name>right</formula-name>(<formula-name>right</formula-name>(Current)))  <blue-color>then</blue-color></li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>Current</formula-name>  &larr; <green-color>call</green-color> <formula-name>Rotation_L</formula-name>(Current)</li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>color</formula-name>(Current)  &larr; BLACK    </li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<formula-name>сolor</formula-name>(<formula-name>left</formula-name>(Current))  &larr;  RED</li>
+            <li><blue-color>return</blue-color> Current</li>
+          </ol>
+        </code-part>
       </left-column>
+      <right-column>
+        <h2 class="rounded-box column-title yellow">Коментар</h2>
+        <text-part>Текст коментаря</text-part>
+        <steps-of-algo>Крок <span class="red-text">4</span> из <span>30</span></steps-of-algo>
+        <h2>ПРОГРАВАТИ</h2>
+        <methods-list class="">
+          <method-item class="active" (click)="PlayNonStop()">
+            <label-part class="_10pt">НЕПЕРЕРВНО</label-part>
+          </method-item>
+          <method-item class=""  (click)="PlayStepByStep()">
+            <label-part class="_10pt">ПОКРОКОВО</label-part>
+          </method-item>
+        </methods-list>
+      </right-column>
+    </middle-part>
+    <lower-part>
+      <info-part>
+        <button-element class="rounded-box yellow " (click)="GetInfo()">
+          <info-sign></info-sign>&nbsp;<text-part>ДОВІДКА</text-part>
+        </button-element>
+      </info-part>
+      <controls-part>
+        <button-element class="rounded-box blue start">
+          <text-part>СТАРТ</text-part><arrow-right></arrow-right>
+        </button-element>
+        <button-element class="rounded-box blue step-forwards">
+          <text-part>&nbsp;</text-part><arrow-right></arrow-right><arrow-right></arrow-right>
+        </button-element>
+        <button-element class="rounded-box blue pause">
+          <text-part>ПАУЗА</text-part><pause-sign></pause-sign>
+        </button-element>
+        <button-element class="rounded-box blue step-back">
+          <arrow-left></arrow-left><arrow-left></arrow-left><text-part>&nbsp;</text-part>
+        </button-element>
+        <button-element class="rounded-box blue stop">
+          <text-part>СТОП</text-part><stop-sign></stop-sign>
+        </button-element>
+      </controls-part>
 
-    </miidle-part>
+
+    </lower-part>
+    <footer-part>
+      &copy; 2018, ВІЗУАЛІЗАЦІЯ АЛГОРИТМІВ ЛОКАЛЬНОГО БАЛАНСУВАННЯ BST-ДЕРЕВА
+    </footer-part>
   </wrapper-content>
 </wrapper-page-algoviz>
