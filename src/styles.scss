@@ -80,8 +80,7 @@
     background: url(assets/img/svg/symbol_tool.svg) no-repeat;
   }
 
-
-.rounded-box {
+  .rounded-box {
     text-transform: uppercase;
     text-align: center;
     border: 1px #666666 solid;
@@ -93,6 +92,7 @@
     justify-content: center;
     align-items: center;
   }
+
   .rounded-box-block {
     text-transform: uppercase;
     text-align: center;
@@ -103,6 +103,7 @@
     min-height: 13px;
     display: block;
   }
+
   .rounded-box.item-title {
     border-bottom: 1px #666666 solid;
     border-left: 0;
@@ -111,6 +112,7 @@
     border-radius: 5px 5px 0 0;
     word-break: normal;
   }
+
   .green {
     color: #fff;
     background: #39B54A;
@@ -126,6 +128,11 @@
     font-weight: bold;
     background: #D9E021;
     background: linear-gradient(to top, #2839e0, #5e98c6);
+  }
+  .active {
+    color: #383838;
+    background: #FBB03B;
+    background: linear-gradient(to top, #F47B25, #FBB03B);
   }
 
   red-text,
@@ -158,6 +165,58 @@
   body {
     background: #848383;
     font-size: 10pt;
+    modal-window {
+      position:absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: rgba(123, 123, 123, 0.6);
+      z-index: 6;
+      items-wrapper {
+        display: block;
+        width:50%;
+        margin: 10% auto .5em auto;
+        background: #fff;
+        border: 1px solid #666666;
+        border-radius: 5px;
+        methods-list {
+          width: 93%;
+          height: 100%;
+          min-height: 30px;
+          display: block;
+          margin: 10px auto 10px auto;
+          text-align: justify;
+          method-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2px;
+            color: #383838;
+            background: linear-gradient(to top, #7b7b7b, #a0a0a0);
+            border-radius: 5px;
+            margin: 0 0 1% 0;
+            line-height: 20pt;
+            text-part {
+              width: 85%;
+              display: inline-block;
+              text-align: left;
+              word-wrap: break-word;
+              font-weight: bold;
+              cursor: pointer;
+              padding: 0 0 0 5%;
+            }
+          }
+          method-item:hover{
+            color: #383838;
+            background: #FBB03B;
+            background: linear-gradient(to top, #F47B25, #FBB03B);
+          }
+        }
+      }
+    }
+
     wrapper-page-algoviz {
       background: #C4C4C4;
       display: block;

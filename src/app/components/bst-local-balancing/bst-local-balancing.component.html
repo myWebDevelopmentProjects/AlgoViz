@@ -1,3 +1,19 @@
+<modal-window [style.display]="modalWindowShow">
+  <items-wrapper>
+    <h2 class="rounded-box item-title yellow">OБЕРІТЬ МЕТОД ЛОКАЛЬНОГО БАЛАНСУВАННЯ</h2>
+    <methods-list class="methods">
+      <method-item (click)="BalanceRandom()">
+        <symbol-tool></symbol-tool><text-part class="_11pt">Рандомізація =></text-part>
+      </method-item>
+      <method-item (click)="BalanceAmortization()">
+        <symbol-tool></symbol-tool><text-part class="_11pt">Амортизація =></text-part>
+      </method-item>
+      <method-item (click)="BalanceOptimization()">
+        <symbol-tool></symbol-tool><text-part class="_11pt">Оптимізація =></text-part>
+      </method-item>
+    </methods-list>
+  </items-wrapper>
+</modal-window>
 <wrapper-page-algoviz>
   <h1 class="rounded-box green main-title">ВІЗУАЛІЗАЦІЯ АЛГОРИТМІВ ЛОКАЛЬНОГО БАЛАНСУВАННЯ BST-ДЕРЕВА</h1>
   <wrapper-content>
@@ -10,23 +26,23 @@
           <h2 class="rounded-box item-title yellow">ОПЕРАЦІЇ НАД ЕЛЕМЕНТАМИ BST</h2>
           <methods-list class="methods">
             <method-item class="active" (click)="AddElement()">
-              <symbol-add></symbol-add><text-part class="_11pt">Додати елемент</text-part>
+              <symbol-add></symbol-add><text-part class="_11pt">Додати елемент {{ currentElement  }}</text-part>
             </method-item>
             <method-item class="active" (click)="RemoveElement()">
-              <symbol-remove></symbol-remove><text-part class="_11pt">Видалити елемент</text-part>
+              <symbol-remove></symbol-remove><text-part class="_11pt">Видалити елемент {{ lastAddedElement }}</text-part>
             </method-item>
           </methods-list>
         </items-wrapper>
         <items-wrapper>
           <h2 class="rounded-box item-title yellow">МЕТОДИ ЛОКАЛЬНОГО БАЛАНСУВАННЯ</h2>
           <methods-list class="methods">
-            <method-item class="active" (click)="BalanceRandom()">
+            <method-item [ngClass]="{active: BalanceRandomMethod.active}" (click)="BalanceRandom()">
               <symbol-tool></symbol-tool><text-part class="_11pt">Рандомізація =></text-part>
             </method-item>
-            <method-item class="active" (click)="BalanceAmortization()">
+            <method-item [ngClass]="{active: BalanceAmortizationMethod.active}" (click)="BalanceAmortization()">
               <symbol-tool></symbol-tool><text-part class="_11pt">Амортизація =></text-part>
             </method-item>
-            <method-item class="active" (click)="BalanceOptimization()">
+            <method-item [ngClass]="{active: BalanceOptimizationMethod.active}" (click)="BalanceOptimization()">
               <symbol-tool></symbol-tool><text-part class="_11pt">Оптимізація =></text-part>
             </method-item>
           </methods-list>
@@ -55,7 +71,7 @@
       <left-column>
         <h2 class="rounded-box column-title yellow">Додати елемент</h2>
         <code-part>
-          <ol>
+          <ol #codePart>
             <li><blue-color>if</blue-color>&nbsp;<formula-name>data</formula-name>(New_Elem) < <formula-name>data</formula-name>(Current) <blue-color>then</blue-color></li>
             <li>&nbsp;&nbsp;&nbsp;<formula-name>left</formula-name>(Current) &larr; <green-color>call</green-color>  <formula-name>Insert_Tree234</formula-name>( <formula-name>left</formula-name>( Current ), New_Elem, <blue-color>FALSE</blue-color>)</li>
             <li>&nbsp;&nbsp;&nbsp;<blue-color>if</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>( Current ) <blue-color>and</blue-color><green-color>call</green-color> <formula-name>Indication</formula-name>( <formula-name>left</formula-name>( Current )) <blue-color>and</blue-color><em>flag</em> <blue-color>then</blue-color></li>

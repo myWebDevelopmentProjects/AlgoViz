@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<code-part>
+<frames>
+
   <![CDATA[
   <ol>
     <li><blue-color>if</blue-color>&nbsp;<formula-name>data</formula-name>(New_Elem) < <formula-name>data</formula-name>(Current) <blue-color>then</blue-color></li>
@@ -28,4 +29,4 @@
     <li><blue-color>return</blue-color> Current</li>
   </ol>
   ]]>
-</code-part>
+</frames>
