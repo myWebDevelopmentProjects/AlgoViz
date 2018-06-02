@@ -22,7 +22,7 @@ body {
     color: #2e3e9a;
 
   }
-  .width_100_percent {
+  .width-100-percent {
     width:100%;
   }
   .current-instruction {
@@ -42,7 +42,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      back_btn {
+      back-btn {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -50,7 +50,7 @@ body {
         text-align: center;
         cursor: pointer;
         background: linear-gradient(#92c83d, #d5df23);
-        double_arrow_left {
+        double-arrow-left {
           width: 10%;
           height: 1rem;
         }
@@ -77,7 +77,7 @@ body {
       li {
         list-style-position: inside;
       }
-      ul.algorithms_nav {
+      ul.algorithms-nav {
         margin: .4rem auto .4rem auto;
         li {
           background: linear-gradient(#c8aa27, #c8bd4e);
@@ -85,6 +85,7 @@ body {
           color: #fff;
           width: 50%;
           text-align: left;
+          cursor: pointer;
           a {
             text-align: left;
           }
@@ -97,7 +98,7 @@ body {
           }
           a:after {
             display: inline-block;
-            background: url(assets/img/svg/double_arrow_left_white.svg);
+            background: url(assets/img/svg/double-arrow-left-white.svg);
             background-repeat: no-repeat;
             background-size: contain;
             content: "\00A0";
@@ -107,12 +108,12 @@ body {
         }
       }
     }
-    view_row {
+    view-row {
       display: flex;
       width: 100%;
       align-items: flex-start;
       justify-content: center;
-      data_structure {
+      data-structure {
         height: 22rem;
         background: white;
         padding: 0;
@@ -126,7 +127,7 @@ body {
           border-right: 0;
           border-left:0;
           background: linear-gradient(#92c83d, #d5df23);
-          arrow_down {
+          arrow-down {
             width: 10%;
             height: 1rem;
           }
@@ -135,7 +136,7 @@ body {
             text-align: center;
           }
         }
-        active_field {
+        active-field {
           height: 19rem;
           /* The animation code */
           @keyframes example {
@@ -145,7 +146,7 @@ body {
             75%  {background-color:green; left:0px; top:200px;}
             100% {background-color:red; left:0px; top:0px;}
           }
-          @keyframes root_to_left_node_1_1 {
+          @keyframes root-to-left-node-1-1 {
             0%   {background-color:red; left:20rem; top:0px;}
             25%  {background-color:yellow; left:19rem; top:1rem;}
             50%  {background-color:blue; left:18rem; top:1rem;}
@@ -168,18 +169,18 @@ body {
 
           }
           item-list.init {
-            background: url(assets/img/svg/bst_item_init.svg);
+            background: url(assets/img/svg/bst-item-init.svg);
           }
           item-list.compare {
-            background: url(assets/img/svg/bst_item_compare.svg);
+            background: url(assets/img/svg/bst-item-compare.svg);
           }
 
           @import "style-for-bst";
         }
       }
-      right_block {
+      right-block {
         width: 30%;
-        comments_block {
+        comments-block {
           height: 17rem;
           background: white;
           padding: 0;
@@ -191,11 +192,11 @@ body {
             border-left:0;
             background: linear-gradient(#92c83d, #d5df23);
           }
-          active_field {
+          active-field {
             height: 187px;
           }
         }
-        procedures_block {
+        procedures-block {
           height: 17em;
           background: white;
           padding: 0;
@@ -207,7 +208,7 @@ body {
             border-left:0;
             background: linear-gradient(#92c83d, #d5df23);
           }
-          active_field {
+          active-field {
             overflow-y: scroll;
             ul {
               height: 12rem;
@@ -227,7 +228,7 @@ body {
                 color: #fff;
                 span:before {
                   display: inline-block;
-                  background: url(assets/img/svg/double_arrow_left_white.svg);
+                  background: url(assets/img/svg/double-arrow-left-white.svg);
                   background-repeat: no-repeat;
                   background-size: contain;
                   content: "\00A0";
@@ -239,7 +240,7 @@ body {
           }
         }
       }
-      data_pseudocode {
+      data-pseudocode {
         height: 17rem;
         background: white;
         padding: 0;
@@ -253,7 +254,7 @@ body {
           border-right: 0;
           border-left:0;
           background: linear-gradient(#92c83d, #d5df23);
-          arrow_down {
+          arrow-down {
             width: 10%;
             height: 1rem;
             height: 1rem;
@@ -264,12 +265,12 @@ body {
           span.localization {
             text-align: right;
           }
-          span.js_procedure_name {
+          span.js-procedure-name {
             text-transform: none;
             text-align: left;
           }
         }
-        active_field {
+        active-field {
           height: 210px;
           ol {
             list-style: none;
@@ -280,7 +281,7 @@ body {
               display: inline-block;
               width: 1.3em;
               margin:0 1em 0 0;
-              background: no-repeat url("'assets/img/svg/code_part_li.svg");
+              background: no-repeat url("'assets/img/svg/code-part-li.svg");
               background-size: contain;
               text-align: center;
               font-weight: bold;
@@ -292,7 +293,7 @@ body {
           }
         }
       }
-      help_btn {
+      help-btn {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -300,7 +301,7 @@ body {
         text-align: center;
         cursor: pointer;
         background: linear-gradient(#92c83d, #d5df23);
-        help_btn_icon {
+        help-btn-icon {
           width: 10%;
           height: 1rem;
         }
@@ -309,7 +310,7 @@ body {
           text-align: center;
         }
       }
-      control_btn {
+      control-btn {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -321,18 +322,18 @@ body {
           width: 90%;
           text-align: center;
         }
-        control_icon {
+        control-icon {
           width: 10%;
           height: 1rem;
           width: 1rem;
           margin: 0 .3rem 0 .2rem;
         }
-        start-control_icon {
+        start-control-icon {
           width: 10%;
           height: 1rem;
         }
       }
-      control_btn.active {
+      control-btn.active {
         background: linear-gradient(#db8753, #b61520);
       }
 
@@ -340,7 +341,7 @@ body {
     view-footer {
       display: block;
       font-size: .8rem;
-      copy_block {
+      copy-block {
         display: inline-block;
       }
     }

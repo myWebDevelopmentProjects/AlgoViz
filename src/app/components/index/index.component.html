@@ -5,9 +5,10 @@
   <view-page>
     <content-of-page i18n>content_page_index</content-of-page>
     <ul class="algorithms_nav">
-      <li><text-part i18n>bst_non_balancing_add</text-part></li>
-      <li><text-part i18n>bst_local_balancing_random</text-part></li>
-      <li><text-part i18n>WEB app</text-part></li>
+      <li><a (click)="routeAlgoVizPage('bst_non_balancing_add')"><text-part i18n>bst_non_balancing_add</text-part></a></li>
+      <li><a (click)="routeAlgoVizPage('bst_local_balancing_random')"><text-part i18n>bst_local_balancing_random</text-part></a></li>
+      <li><a (click)="routeAlgoVizPage('bst_local_balancing_amortization')"><text-part i18n>bst_local_balancing_amortization</text-part></a></li>
+      <li><a (click)="routeAlgoVizPage('bst_local_balancing_optimization')"><text-part i18n>bst_local_balancing_optimization</text-part></a></li>
     </ul>
   </view-page>
 </content-view>

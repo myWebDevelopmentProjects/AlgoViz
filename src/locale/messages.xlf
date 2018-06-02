@@ -9,13 +9,6 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ac8137465024fa677325f0ed030738256e3b1fad" datatype="html">
-        <source>bst_non_balancing_add</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/index/index.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="1b2515b9566591a416f17919d46fb14aa5d46243" datatype="html">
         <source>content_page_index</source>
         <context-group purpose="location">
@@ -23,6 +16,35 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="ac8137465024fa677325f0ed030738256e3b1fad" datatype="html">
+        <source>bst_non_balancing_add</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d78534b2d95d16d40021dfb9fd015a76572ceca6" datatype="html">
+        <source>bst_local_balancing_random</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1552b4e90b4a4e81a0926699a267868a0f4445c2" datatype="html">
+        <source>bst_local_balancing_amortization</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="73b9822c6940c35cbba9b76b9edc137919c58c61" datatype="html">
+        <source>bst_local_balancing_optimization</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+
 
     </body>
   </file>

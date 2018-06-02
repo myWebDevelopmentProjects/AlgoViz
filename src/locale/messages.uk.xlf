@@ -4,15 +4,7 @@
     <body>
       <trans-unit id="6391c10265a330ab4a7bd9c494aa4a3f18962a2f" datatype="html">
         <source>web_app_title</source>
-        <target>ВЕБ-ДОДАТОК ВІЗУАЛІЗАЦІЇ АЛГОРИТМІВ ЛОКАЛЬНОГО БАЛАНСУВАННЯ BST-ДЕРЕВА</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/index/index.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ac8137465024fa677325f0ed030738256e3b1fad" datatype="html">
-        <source>bst_non_balancing_add</source>
-        <target>Додавання елемента без балансування</target>
+        <target>Веб-застосунок візуалізації алгоритмів локального балансування BST-дерева</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/index/index.component.ts</context>
           <context context-type="linenumber">13</context>
@@ -30,6 +22,38 @@
     <p>BST-дерево применяется для построения абстрактных структур, таких, как множества, мультимножества, ассоциативные массивы (словари).</p>
             ]]>
         </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ac8137465024fa677325f0ed030738256e3b1fad" datatype="html">
+        <source>bst_non_balancing_add</source>
+        <target>Додавання елемента без балансування</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d78534b2d95d16d40021dfb9fd015a76572ceca6" datatype="html">
+        <source>bst_local_balancing_random</source>
+        <target>Локальне балансування BST :: РАНДОМИЗАЦИЯ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1552b4e90b4a4e81a0926699a267868a0f4445c2" datatype="html">
+        <source>bst_local_balancing_amortization</source>
+        <target>Локальне балансування BST :: АМОРТИЗАЦІЯ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="73b9822c6940c35cbba9b76b9edc137919c58c61" datatype="html">
+        <source>bst_local_balancing_optimization</source>
+        <target>Локальне балансування BST :: ОПТИМІЗАЦІЯ</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/index/index.component.ts</context>
           <context context-type="linenumber">13</context>

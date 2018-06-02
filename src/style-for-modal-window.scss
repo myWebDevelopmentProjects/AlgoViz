@@ -1,6 +1,6 @@
-screen_error,
-error_title,
-btn_close_modal
+screen-error,
+error-title,
+btn-close-modal
 {
     display: block;
     text-transform: uppercase;
@@ -12,20 +12,20 @@ btn_close_modal
     margin: .2rem;
 }
 
-error_title_icon {
+error-title-icon {
     display: block;
-    background: url(assets/img/svg/error_title_icon.svg);
+    background: url(assets/img/svg/error-title-icon.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
-btn_close_icon {
+btn-close-icon {
     display: block;
-    background: url(assets/img/svg/btn_close_icon.svg);
+    background: url(assets/img/svg/btn-close-icon.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-modal_window {
+modal-window {
     display: none;
     position: absolute;
     width: 100%;
@@ -36,7 +36,7 @@ modal_window {
     bottom: 0;
     background: rgba(160, 160, 160, 0.5);
     z-index: 1;
-    screen_error {
+    screen-error {
         display: block;
         height: auto;
         background: white;
@@ -45,7 +45,7 @@ modal_window {
         margin: 10% auto 0 auto;
         z-index: 2;
         border-radius: 10px;
-        error_title {
+        error-title {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -54,7 +54,7 @@ modal_window {
             border-right: 0;
             border-left: 0;
             background: linear-gradient(#c8313f, #dfd9da);
-            error_title_icon {
+            error-title-icon {
                 width: 10%;
                 height: 2rem;
             }
@@ -71,7 +71,7 @@ modal_window {
             padding: 1rem;
             overflow-y: scroll;
         }
-        btn_close_modal {
+        btn-close-modal {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -79,7 +79,7 @@ modal_window {
             margin: 1rem auto 1rem auto;
             cursor: pointer;
             background: linear-gradient(#92c83d, #d5df23);
-            btn_close_icon {
+            btn-close-icon {
                 width: 10%;
                 height: 1rem;
             }

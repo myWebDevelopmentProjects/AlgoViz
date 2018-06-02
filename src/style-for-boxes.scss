@@ -1,15 +1,15 @@
-help_btn,
-back_btn,
-screen_error,
-error_title,
+help-btn,
+back-btn,
+screen-error,
+error-title,
 title-block,
-data_structure,
-data_pseudocode,
-comments_block,
-procedures_block,
-control_btn,
+data-structure,
+data-pseudocode,
+comments-block,
+procedures-block,
+control-btn,
 view-page,
-ul.algorithms_nav li {
+ul.algorithms-nav li {
     display: inline-block;
     text-transform: uppercase;
     font-weight: bold;
@@ -43,7 +43,7 @@ bst-item {
     background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36.4 36.5'%3E%3CradialGradient id='a' cx='18.225' cy='30.598' r='18.27' gradientTransform='matrix(1 0 0 .9445 0 -10.644)' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='.044' stop-color='%232aaae2'/%3E%3Cstop offset='.292' stop-color='%232aaae2'/%3E%3Cstop offset='.487' stop-color='%23239cd8'/%3E%3Cstop offset='.893' stop-color='%23167ac0'/%3E%3Cstop offset='1' stop-color='%231072ba'/%3E%3C/radialGradient%3E%3Cellipse fill='url(%23a)' stroke='%234E4E4E' stroke-miterlimit='10' cx='18.2' cy='18.3' rx='17.7' ry='17.8'/%3E%3CradialGradient id='b' cx='17.822' cy='261.409' r='12.041' gradientTransform='matrix(1 0 0 .5169 0 -126.696)' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='1' stop-color='%23cdcccc' stop-opacity='.1'/%3E%3C/radialGradient%3E%3Cellipse fill='url(%23b)' cx='17.8' cy='8.4' rx='11.7' ry='6.4'/%3E%3C/svg%3Es");
 }
 
-active_field {
+active-field {
     display: block;
     overflow-y: scroll;
     word-wrap: break-word;
@@ -52,57 +52,57 @@ active_field {
     padding: 0.5rem;
 }
 
-double_arrow_left {
+double-arrow-left {
     display: block;
-    background: url(assets/img/svg/double_arrow_left.svg);
+    background: url(assets/img/svg/double-arrow-left.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-arrow_down {
+arrow-down {
     display: block;
-    background: url(assets/img/svg/arrow_down.svg);
+    background: url(assets/img/svg/arrow-down.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-help_btn_icon {
+help-btn-icon {
     display: block;
-    background: url(assets/img/svg/help_btn_icon.svg);
+    background: url(assets/img/svg/help-btn-icon.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-.start > control_icon {
-    background: url(assets/img/svg/start_btn_icon.svg);
-    display: block;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.back > control_icon {
-    background: url(assets/img/svg/back_btn_icon.svg);
+.start > control-icon {
+    background: url(assets/img/svg/start-btn-icon.svg);
     display: block;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-.pause > control_icon {
-    background: url(assets/img/svg/pause_btn_icon.svg);
+.back > control-icon {
+    background: url(assets/img/svg/back-btn-icon.svg);
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.pause > control-icon {
+    background: url(assets/img/svg/pause-btn-icon.svg);
     display: block;
       background-repeat: no-repeat;
     background-size: contain;
 }
 
-.forward > control_icon {
-    background: url(assets/img/svg/forward_btn_icon.svg);
+.forward > control-icon {
+    background: url(assets/img/svg/forward-btn-icon.svg);
     display: block;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-.stop > control_icon {
-    background: url(assets/img/svg/stop_btn_icon.svg);
+.stop > control-icon {
+    background: url(assets/img/svg/stop-btn-icon.svg);
     display: block;
     background-repeat: no-repeat;
     background-size: contain;

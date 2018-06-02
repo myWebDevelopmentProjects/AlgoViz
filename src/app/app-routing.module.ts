@@ -6,10 +6,11 @@ import { environment } from '../environments/environment';
 import { IndexComponent } from './components/index/index.component';
 import { BstLocalBalancingComponent } from './components/bst-local-balancing/bst-local-balancing.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { AlgoVizPageComponent } from './components/algo-viz-page/algo-viz-page.component';
 
 const routes: Routes = [
   { path: 'index', component: IndexComponent },
-  { path: 'bst-local-balancing', component: BstLocalBalancingComponent },
+  { path: 'algo-viz-page/:type', component: AlgoVizPageComponent },
   { path: '', redirectTo: 'index', pathMatch: 'full'},
   { path: '**', redirectTo: 'index', pathMatch: 'full'},
 ];

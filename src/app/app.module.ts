@@ -10,13 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { SchemaParserService } from './services/schema-parser.service';
 import { LocalizationService } from './services/localization.service';
 import { IndexComponent } from './components/index/index.component';
+import { AlgoVizPageComponent } from './components/algo-viz-page/algo-viz-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BstLocalBalancingComponent,
     MainNavComponent,
-    IndexComponent
+    IndexComponent,
+    AlgoVizPageComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
