@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'start', component: MainNavComponent },
   { path: 'bst-local-balancing', component: BstLocalBalancingComponent },
   { path: '', redirectTo: 'start', pathMatch: 'full'},
+  { path: '**', redirectTo: 'start', pathMatch: 'full'},
 ];
 
 @NgModule({

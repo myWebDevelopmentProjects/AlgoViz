@@ -1,14 +1,19 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+
+declare var document: any;
+declare var lib: any;
 
 @Component({
   selector: 'app-bst-local-balancing',
   templateUrl: './bst-local-balancing.component.html',
   styleUrls: ['./bst-local-balancing.component.scss']
 })
-export class BstLocalBalancingComponent implements OnInit {
 
+
+
+export class BstLocalBalancingComponent implements OnInit, AfterViewInit {
   @ViewChild('codePart', {read: ElementRef}) codePart: ElementRef;
 
   BST_MAX_START_ITEMS = 20;
@@ -38,9 +43,9 @@ export class BstLocalBalancingComponent implements OnInit {
   playingMode = 'nonstop';
   itemsStart = [];
   bstItems: any = [];
-
+  private scripts: any = {};
   constructor(
-    private router: Router,
+    private router: Router
 ) {
     let i = 0;
     while (i <= this.BST_MAX_START_ITEMS) {
@@ -54,6 +59,7 @@ export class BstLocalBalancingComponent implements OnInit {
       this.bstItems.push(item);
       i++;
     }
+
   }
 
   getPseudocode(url: string) {
@@ -155,5 +161,8 @@ export class BstLocalBalancingComponent implements OnInit {
 
   RouteStart() {
     this.router.navigate(['start']);
+  }
+
+  ngAfterViewInit() {
   }
 }

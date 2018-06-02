@@ -49,22 +49,7 @@
         </items-wrapper>
         </left-column>
         <right-column>
-        <h2 class="rounded-box column-title yellow">ДЕРЕВО ДВІЙКОГОВО ПОШУКУ - BST</h2>
-        <items-wrapper>
-          <items-start>
-            <strong>Елементи:</strong>
-            <item-node
-              *ngFor="let item of itemsStart; let i = index;"
-              [style.display]="item.display">
-              {{ item.value}}
-            </item-node>
-          </items-start>
-          <bst-items>
-            <item-node
-              *ngFor="let item of bstItems; let i = index;"
-              [style.display]="item.display" id="bst_item_{{ i }}">{{ item.value}}</item-node>
-          </bst-items>
-        </items-wrapper>
+          <canvas id="canvas" width="758" height="310" style="background-color:#FFFFFF"></canvas>
       </right-column>
     </top-part>
     <middle-part>
@@ -137,11 +122,10 @@
           <text-part>СТОП</text-part><stop-sign></stop-sign>
         </button-element>
       </controls-part>
-
-
     </lower-part>
     <footer-part>
       &copy; 2018, ВІЗУАЛІЗАЦІЯ АЛГОРИТМІВ ЛОКАЛЬНОГО БАЛАНСУВАННЯ BST-ДЕРЕВА
     </footer-part>
   </wrapper-content>
 </wrapper-page-algoviz>
+

@@ -7,6 +7,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { BstLocalBalancingComponent } from './components/bst-local-balancing/bst-local-balancing.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { SchemaParserService } from './services/schema-parser.service';
+import { LocalizationService } from './services/localization.service';
 
 @NgModule({
   declarations: [
@@ -17,9 +20,13 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    SchemaParserService,
+    LocalizationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
