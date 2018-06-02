@@ -28,7 +28,7 @@ body {
   .current-instruction {
     background: #fffa90;
   }
-  @import "style-for-modal-window";
+  @import "style-for-dialog-window";
   content-view {
     @import "style-for-boxes";
     display: block;

@@ -1,13 +1,16 @@
 <content-view>
-  <p>
-    algo-viz-page works! <span>{{ typeOfAnimation }} </span>
-  </p>
   <view-header>
-    <back-btn><double-arrow-left>&nbsp;</double-arrow-left><span>&nbsp;</span></back-btn><title-block class="width_100_percent"><span>&nbsp;</span></title-block>
+    <back-btn (click)="routeIndex()"><double-arrow-left>&nbsp;</double-arrow-left><span i18n>btn_back_header</span></back-btn><title-block class="width-100-percent" i18n><span>web_app_title_algo_viz_page</span></title-block>
   </view-header>
   <view-row>
     <data-structure>
-      <title-block class="width_100_percent"><arrow-down>&nbsp;</arrow-down><span>Додавання елемента до BST без балансування</span></title-block>
+      <title-block class="width-100-percent">
+        <arrow-down>&nbsp;</arrow-down>
+        <span [style.display]="typeOfAnimation === 'bst_non_balancing_add' ? 'block' : 'none'" i18n>bst_non_balancing_add</span>
+        <span [style.display]="typeOfAnimation === 'bst_local_balancing_random' ? 'block' : 'none'" i18n>bst_local_balancing_random</span>
+        <span [style.display]="typeOfAnimation === 'bst_local_balancing_amortization' ? 'block' : 'none'" i18n>bst_local_balancing_amortization</span>
+        <span [style.display]="typeOfAnimation === 'bst_local_balancing_optimization' ? 'block' : 'none'" i18n>bst_local_balancing_optimization</span>
+      </title-block>
       <active-field>
         <p>Елементи:
           <items-wrapper>
@@ -57,7 +60,7 @@
     </data-structure>
     <right-block>
       <comments-block>
-        <title-block class="width_100_percent"><span>&nbsp;</span></title-block>
+        <title-block class="width-100-percent"><span i18n>code_line_comment</span></title-block>
         <active-field>
 
         </active-field>
@@ -70,14 +73,14 @@
   <view-row>
 
     <data-pseudocode>
-      <title-block class="width_100_percent"><arrow-down>&nbsp;</arrow-down><span class="localization">&nbsp;</span><span class="js_procedure_name red"></span></title-block>
+      <title-block class="width-100-percent"><arrow-down>&nbsp;</arrow-down><span i18n>current_procedure</span><span class="js_procedure_name red"></span></title-block>
       <active-field>
 
       </active-field>
     </data-pseudocode>
     <right-block>
       <procedures-block>
-        <title-block class="width_100_percent"><span></span>&nbsp;</title-block>
+        <title-block class="width-100-percent"><span i18n>procedures</span>&nbsp;</title-block>
         <active-field>
 
 
@@ -86,11 +89,11 @@
     </right-block>
   </view-row>
   <view-row>
-    <help-btn><help-btn_icon>&nbsp;</help-btn_icon><span>&nbsp;</span></help-btn>
-    <control-btn class="start"><span>&nbsp;</span><control-icon>&nbsp;</control-icon></control-btn>
-    <control-btn class="back"><control-icon>&nbsp;</control-icon><span>&nbsp;</span></control-btn>
-    <control-btn class="pause"><span>&nbsp;</span><control-icon>&nbsp;</control-icon></control-btn>
-    <control-btn class="forward"><span>&nbsp;</span><control-icon>&nbsp;</control-icon></control-btn>
-    <control-btn class="stop"><span>&nbsp;</span><control-icon>&nbsp;</control-icon></control-btn>
+    <help-btn><help-btn-icon>&nbsp;</help-btn-icon><span i18n>help</span></help-btn>
+    <control-btn (click)="callDialogWindow()" class="start"><span i18n>start</span><control-icon>&nbsp;</control-icon></control-btn>
+    <control-btn class="back"><control-icon>&nbsp;</control-icon><span i18n>back</span></control-btn>
+    <control-btn class="pause"><span i18n>pause</span><control-icon>&nbsp;</control-icon></control-btn>
+    <control-btn class="forward"><span i18n>forwards</span><control-icon>&nbsp;</control-icon></control-btn>
+    <control-btn class="stop"><span i18n>stop</span><control-icon>&nbsp;</control-icon></control-btn>
   </view-row>
 </content-view>

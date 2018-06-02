@@ -1,0 +1,7 @@
+<dialog-window [style.display]="show ? 'block' : 'none'">
+  <screen-error class="_config">
+    <error-title class="title"><error-title-icon></error-title-icon><span i18n>error</span></error-title>
+    <error-msg class="js-error-msg">{{ msg }}</error-msg>
+    <btn-close-modal (click)="closeDialogWindow()"><btn-close-icon></btn-close-icon><span i18n>close</span></btn-close-modal>
+  </screen-error>
+</dialog-window>

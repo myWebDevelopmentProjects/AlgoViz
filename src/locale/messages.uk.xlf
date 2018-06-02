@@ -59,6 +59,110 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="6021d416b784b363bfbd09d6e9c88f64d5e2c733" datatype="html">
+        <source>btn_back_header</source>
+        <target>ПОВЕРНУТИСЬ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b8f639226616f4ef6286e092b16380801380dfe3" datatype="html">
+        <source>web_app_title_algo_viz_page</source>
+        <target>Веб-застосунок візуалізації алгоритмів локального балансування BST-дерева</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e43060464c736cb15e48d5b058784c657ac8976d" datatype="html">
+        <source>code_line_comment</source>
+        <target>Коментар до коду</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="37549191e82b36b66cc798f4d8b596c910094ed1" datatype="html">
+        <source>current_procedure</source>
+        <target>Виконувана процедура&nbsp;::&nbsp;</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="35a2e63b1c5a1dd52ae0204d832b8d6c50c0b390" datatype="html">
+        <source>procedures</source>
+        <target>Процедури</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5ecc2b6454b68f6583f0b53c82d88c45edcaa041" datatype="html">
+        <source>help</source>
+        <target>Довідка</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8f38ad0f2ac90714bdf91f991b77ffbf08979147" datatype="html">
+        <source>start</source>
+        <target>Старт</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3923c7ee91836570ff8c5cc870a63cd5e2e61564" datatype="html">
+        <source>back</source>
+        <target>Назад</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5a75b6f98ce5be5948dfa92e2d1e68415da5ceca" datatype="html">
+        <source>pause</source>
+        <target>Пауза</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="45ffb019fe71cb8e35822d9afb10be2200027250" datatype="html">
+        <source>forwards</source>
+        <target>Вперед</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5f3e10c4138ad2ddc19b707afdec396e35dfd8db" datatype="html">
+        <source>stop</source>
+        <target>Стоп</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="afa4c0c0166031b02fb6d003dabda1ea9ddaed37" datatype="html">
+        <source>error</source>
+        <target>Помилка!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/dialog-window.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e329f67417e3574eda9988c92b15c0e29df1dd1b" datatype="html">
+        <source>close</source>
+        <target>Закрити</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/dialog-window.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>
