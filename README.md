@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## to generate separate
+ng build --output-path=dist/ru --aot=false -prod --bh /ru/ --i18n-file=locale/messages.ru.xlf --i18n-format=xlf --locale=ru
+
+ng build --output-path=dist --prod --aot=false --i18n-file=locale/messages.ru.xlf --i18n-format=xlf
+ng build --output-path=dist --prod --aot=false --i18n-file=src/locale/messages.uk.xlf --i18n-format=xlf --locale=uk-ua
