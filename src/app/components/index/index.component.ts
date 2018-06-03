@@ -11,7 +11,6 @@ import { SchemaParserService } from '../../services/schema-parser.service';
 export class IndexComponent implements OnInit {
 
   content_index_page: string;
-
   algo_viz_nav: any = [];
 
   constructor(
