@@ -5,10 +5,9 @@
   <view-page>
     <content-of-page [innerHTML]="content_index_page">&nbsp;</content-of-page>
     <ul class="algorithms-nav">
-      <li><a (click)="routeAlgoVizPage('bst_non_balancing_add')"><text-part i18n>bst_non_balancing_add</text-part></a></li>
-      <li><a (click)="routeAlgoVizPage('bst_local_balancing_random')"><text-part i18n>bst_local_balancing_random</text-part></a></li>
-      <li><a (click)="routeAlgoVizPage('bst_local_balancing_amortization')"><text-part i18n>bst_local_balancing_amortization</text-part></a></li>
-      <li><a (click)="routeAlgoVizPage('bst_local_balancing_optimization')"><text-part i18n>bst_local_balancing_optimization</text-part></a></li>
+      <li *ngFor="let item of algo_viz_nav">
+        <a (click)="routeAlgoVizPage(item.link)"><text-part>{{ item.name }}</text-part></a>
+      </li>
     </ul>
   </view-page>
 </content-view>

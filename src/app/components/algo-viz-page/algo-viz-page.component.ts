@@ -20,8 +20,8 @@ export class AlgoVizPageComponent implements OnInit {
     private translate: TranslateService,
     private schema: SchemaParserService
   ) {
-      console.log(translate.data);
-      console.log('XML ', this.schema.schemaXML);
+      console.log('translate', translate.data);
+      console.log('schema ', schema.data['schema']);
   }
 
   routeIndex(): void {
