@@ -17,6 +17,11 @@ export function setupTranslateFactory(
   return () => service.use('uk');
 }
 
+export function setupShemaFactory(
+  service: SchemaParserService): Function {
+  return () => service.use();
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +39,12 @@ export function setupTranslateFactory(
     SchemaParserService,
     DialogWindowService,
     TranslateService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: setupShemaFactory,
+      deps: [ SchemaParserService ],
+      multi: true
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: setupTranslateFactory,

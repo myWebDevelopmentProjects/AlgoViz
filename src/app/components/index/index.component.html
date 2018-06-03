@@ -3,7 +3,7 @@
     <title-block class="width-100-percent" i18n><text-part>web_app_title</text-part></title-block>
   </view-header>
   <view-page>
-    <content-of-page i18n>content_page_index</content-of-page>
+    <content-of-page [innerHTML]="content_index_page">&nbsp;</content-of-page>
     <ul class="algorithms-nav">
       <li><a (click)="routeAlgoVizPage('bst_non_balancing_add')"><text-part i18n>bst_non_balancing_add</text-part></a></li>
       <li><a (click)="routeAlgoVizPage('bst_local_balancing_random')"><text-part i18n>bst_local_balancing_random</text-part></a></li>

@@ -10,23 +10,6 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1b2515b9566591a416f17919d46fb14aa5d46243" datatype="html">
-        <source>content_page_index</source>
-        <target>
-          <![CDATA[
-    <p><strong>BST-дерево</strong> – это разновидность бинарного дерева, для которого верно:</p>
-        <ul>
-            <li>ключ каждого узла дерева Х (если Х не равен null) имеет левые узлы со значениями ключей меньшими значения ключа узла X;</li>
-            <li>все правые узлы в правом поддереве узла Х содержат значения ключей, которые больше или равны значению ключа узла X.</li>
-        </ul>
-    <p>BST-дерево применяется для построения абстрактных структур, таких, как множества, мультимножества, ассоциативные массивы (словари).</p>
-            ]]>
-        </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/index/index.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="ac8137465024fa677325f0ed030738256e3b1fad" datatype="html">
         <source>bst_non_balancing_add</source>
         <target>Додавання елемента без балансування</target>

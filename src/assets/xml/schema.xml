@@ -1,32 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schema>
-  <localization>
-    <index>
-      <title-block>
-        <![CDATA[
-            Веб-застосунок візуалізації алгоритмів локального балансування BST-дерева
-            ]]>
-      </title-block>
-      <content_of_page>
-        <![CDATA[
-    <p>BST-дерево – это разновидность бинарного дерева, для которого верно:</p>
-        <ul>
-            <li>ключ каждого узла дерева Х (если Х не равен null) имеет левые узлы со значениями ключей меньшими значения ключа узла X;</li>
-            <li>все правые узлы в правом поддереве узла Х содержат значения ключей, которые больше или равны значению ключа узла X.</li>
-        </ul>
-    <p>BST-дерево применяется для построения абстрактных структур, таких, как множества, мультимножества, ассоциативные массивы (словари).</p>
-            ]]>
-      </content_of_page>
-    </index>
-    <error>
-      <no_title_found><![CDATA[ Не знайдено заголовку сторінки! ]]></no_title_found>
-      <no_procedure_found><![CDATA[ Не знайдено жодних процедур! ]]></no_procedure_found>
-    </error>
-    <success>
-      <procedures_confirmed><![CDATA[ Процедури знайдено!  ]]></procedures_confirmed>
-    </success>
-    <copy_block><![CDATA[ AlgoViz - візуалізація алгоритмів ]]></copy_block>
-    <no_function_for_procedure><![CDATA[ Не знайдено опису функції для даної процедури ]]></no_function_for_procedure>
-    <procedure_name><![CDATA[ Ім'я процедури ]]></procedure_name>
-  </localization>
+  <algorithm id="bst_non_balancing_add">
+    <procedure current="true" id="INSERT_BST" args="(Root, Object)">
+      <instruction>
+        <comment-text>1 Метод добавления нового элемента в BST-дерево</comment-text>
+        <comment-audio url="audio/Matt Skyer - Our Galaxy.mp3"/>
+        <code><![CDATA[ <span class="grey">New_Elem</span> <- call new Node(Object) ]]></code>
+        <action call="javascript:get_new_elem">
+          <![CDATA[
+                var  New_Elem = $("data_structure items-wrapper item-list:nth-child(1)");
+                var BST = $("bst-structure");
+                console.log("New_Elem as Root", New_Elem.html());
+                BST.find("._0").html(New_Elem.html()).show();
+                New_Elem.hide();
+                ]]>
+        </action>
+      </instruction>
+      <instruction>
+        <comment-text>2 Метод добавления нового элемента в BST-дерево</comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ Root <- call Insert_Node(Root, New_Elem) ]]></code>
+        <action>
+          <![CDATA[
+                var  New_Elem = $("data_structure active_field item:nth-child(1)");
+                var BST = $("bst-structure");
+                console.log("New_Elem as Root", New_Elem.html());
+                BST.find("._1_1").html(New_Elem.html()).show();
+                New_Elem.hide();
+                ]]>
+        </action>
+      </instruction>
+    </procedure>
+    <procedure current="false" id="INSERT_NODE" args="(Current,  New_Elem)">
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ if Current = NULL then ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ return  New_Elem ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ if data(New_Elem) < data(Current) then ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ left(Current) <- call Insert_Node(left(Current), New_Elem) ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ Current <- call Rotation_R(Current) <br/> else ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ right(Current) <- call Insert_Node(right(Current), New_Elem) ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ Current <- call Rotation_L(Current) ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ return Current ]]></code>
+      </instruction>
+    </procedure>
+    <procedure current="false" id="ROTATION_R" args="(Current)">
+      <instruction>
+        <comment-text>Метод – ротация вправо</comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ Temp <- left(Current) ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ left(Current) <- right(Temp) ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ right(Temp) <- Current ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ Current <- Temp  ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ return Current   ]]></code>
+      </instruction>
+    </procedure>
+    <procedure current="false" id="ROTATION_L" args="(Current)">
+      <instruction>
+        <comment-text>Метод – ротация влево</comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ Temp <- right(Current) ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ Temp <- right(Current) ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ right(Current) <- left(Temp) ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ left(Temp) <- Current ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ Current <- Temp ]]></code>
+      </instruction>
+      <instruction>
+        <comment-text></comment-text>
+        <comment-audio url=""/>
+        <code><![CDATA[ return Current ]]></code>
+      </instruction>
+    </procedure>
+  </algorithm>
+
 </schema>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogWindowService } from '../../services/dialog-window.service';
 import { TranslateService } from '../../services/translate.service';
+import { SchemaParserService } from '../../services/schema-parser.service';
 
 @Component({
   selector: 'app-algo-viz-page',
@@ -16,9 +17,11 @@ export class AlgoVizPageComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private dialogWindowService: DialogWindowService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private schema: SchemaParserService
   ) {
       console.log(translate.data);
+      console.log('XML ', this.schema.schemaXML);
   }
 
   routeIndex(): void {
