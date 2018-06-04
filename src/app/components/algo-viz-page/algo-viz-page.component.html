@@ -73,16 +73,20 @@
   <view-row>
 
     <data-pseudocode>
-      <title-block class="width-100-percent"><arrow-down>&nbsp;</arrow-down><span i18n>current_procedure</span><span class="js_procedure_name red"></span></title-block>
+      <title-block class="width-100-percent"><arrow-down>&nbsp;</arrow-down><span class="localization" i18n>current_procedure</span><span class="js-procedure-name red">{{ currentProceduerName }}</span></title-block>
       <active-field>
-
+        <ol>
+          <li [class.active]="item.current" *ngFor="let item of currentProceduerCode" [innerHTML]="item.code"></li>
+        </ol>
       </active-field>
     </data-pseudocode>
     <right-block>
       <procedures-block>
         <title-block class="width-100-percent"><span i18n>procedures</span>&nbsp;</title-block>
         <active-field>
-
+          <ul>
+            <li [class.active]="item.current" *ngFor="let item of proceduersList" [innerHTML]="item.id"></li>
+          </ul>
 
         </active-field>
       </procedures-block>

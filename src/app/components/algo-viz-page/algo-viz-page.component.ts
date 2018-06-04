@@ -12,6 +12,9 @@ import { SchemaParserService } from '../../services/schema-parser.service';
 export class AlgoVizPageComponent implements OnInit {
 
   typeOfAnimation: string;
+  currentProceduerName: string;
+  currentProceduerCode: any[] = [];
+  proceduersList: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -22,10 +25,51 @@ export class AlgoVizPageComponent implements OnInit {
   ) {
       console.log('translate', translate.data);
       console.log('schema ', schema.data['schema']);
+      this.typeOfAnimation = this.route.snapshot.paramMap.get('type');
+      this.currentProceduerName = 'Default';
+      this.updateCurrentProcedureCode(schema.data['schema'][this.typeOfAnimation]);
   }
 
   routeIndex(): void {
     this.router.navigate(['/']);
+  }
+
+  updateProceduresList(procedures: object[]): void {
+    console.log('procedures', procedures);
+    let i = 0;
+    const max = procedures.length;
+    while (i < max) {
+      const line = {current: procedures[i]['current'], id: procedures[i]['id'] };
+      this.proceduersList.push(line);
+      i++;
+    }
+  }
+
+  updateCurrentProcedureCode(current_procedure: object): void {
+    let i = 0;
+    const max = current_procedure['procedures'].length;
+    //
+    this.updateProceduresList(current_procedure['procedures']);
+    //
+    while (i < max) {
+      if (current_procedure['procedures'][i].current) {
+        const procedure = current_procedure['procedures'][i];
+        this.currentProceduerName = procedure.id + procedure.args;
+        this.updateCurrentInstructionsCode(procedure.instructions);
+      }
+      i++;
+      break;
+    }
+   }
+
+  updateCurrentInstructionsCode(instructions: object[]) {
+    let i = 0;
+    const max = instructions.length;
+    while (i < max) {
+      const line = {current: i === 0 ? true : false, code: instructions[i]['code'] };
+      this.currentProceduerCode.push(line);
+      i++;
+    }
   }
 
   callDialogWindow(): void {

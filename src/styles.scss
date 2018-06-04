@@ -290,6 +290,9 @@ body {
               counter-increment: li;
               margin: 0 0 .5em 0;
             }
+            li.active {
+              background: yellow;
+            }
           }
         }
       }

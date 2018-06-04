@@ -2,25 +2,48 @@
   "schema": {
     "bst_non_balancing_add": {
       "name": "Додавання елемента без балансування",
-      "procedure": {
-        "current": true,
-        "id": "INSERT_BST",
-        "args": "(Root, Object)",
-        "instruction": {
-          "_01": {
-            "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-            "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-            "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
-            "action": "setNewElem"
-          },
-          "_02": {
-            "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-            "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-            "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
-            "action": "setNewElem"
+      "procedures":[
+        {
+          "current": true,
+          "id": "INSERT_BST",
+          "args": "(Root, Object)",
+          "instructions": [
+            {
+              "current": true,
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
+              "action": "setNewElem"
+            },
+            {
+              "current": false,
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
+              "action": "setNewElem"
+            }
+          ]
+        },
+        {
+          "current": false,
+          "id": "INSERT_NODE",
+          "args":"(Current,  New_Elem)",
+          "instruction": {
+            "_01": {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "<![CDATA[ if Current = NULL then ]]>",
+              "action": "setNewElem"
+            },
+            "_02": {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
+              "action": "setNewElem"
+            }
           }
         }
-      }
+      ]
     },
     "bst_local_balancing_random": {
       "name": "Локальне балансування BST :: РАНДОМІЗАЦІЯ",
