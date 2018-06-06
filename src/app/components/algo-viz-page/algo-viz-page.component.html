@@ -12,12 +12,12 @@
         <span [style.display]="typeOfAnimation === 'bst_local_balancing_optimization' ? 'block' : 'none'" i18n>bst_local_balancing_optimization</span>
       </title-block>
       <active-field>
-        <p>Елементи:
+        <p>Елементи:</p>
           <items-wrapper>
-            <item-list class="init">0</item-list>
-            <item-list class="compare">1</item-list>
+            <item-list class="init" *ngFor="let item of itemList">{{ item }}</item-list>
+            <!-- item-list class="compare">1</item-list -->
           </items-wrapper>
-        </p>
+
         <bst-structure>
           <bst-item  id="bst_item_0" class="_0" >0</bst-item>
 
@@ -65,6 +65,7 @@
 
         </active-field>
         <audio class="audio-comment" controls>
+          <source src="{{ currentInstructionAudio}}">
           Браузер не підтримує програвання звукових файлів!
         </audio>
       </comments-block>
@@ -85,9 +86,8 @@
         <title-block class="width-100-percent"><span i18n>procedures</span>&nbsp;</title-block>
         <active-field>
           <ul>
-            <li [class.active]="item.current" *ngFor="let item of proceduersList" [innerHTML]="item.id"></li>
+            <li [class.current]="item.current" *ngFor="let item of proceduersList"><span [innerHTML]="item.id"></span></li>
           </ul>
-
         </active-field>
       </procedures-block>
     </right-block>
@@ -100,4 +100,7 @@
     <control-btn class="forward"><span i18n>forwards</span><control-icon>&nbsp;</control-icon></control-btn>
     <control-btn class="stop"><span i18n>stop</span><control-icon>&nbsp;</control-icon></control-btn>
   </view-row>
+  <view-footer>
+    <span class="copy">© 2018,&nbsp;</span><copy-block i18n>copy_block</copy-block>
+  </view-footer>
 </content-view>

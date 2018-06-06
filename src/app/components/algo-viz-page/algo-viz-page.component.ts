@@ -15,6 +15,10 @@ export class AlgoVizPageComponent implements OnInit {
   currentProceduerName: string;
   currentProceduerCode: any[] = [];
   proceduersList: any[] = [];
+  currentInstructionAudio: string;
+
+  // Масив для даних, якими буде заповнюватись дерево
+  itemList: number[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -27,11 +31,20 @@ export class AlgoVizPageComponent implements OnInit {
       console.log('schema ', schema.data['schema']);
       this.typeOfAnimation = this.route.snapshot.paramMap.get('type');
       this.currentProceduerName = 'Default';
+      this.initItemList();
       this.updateCurrentProcedureCode(schema.data['schema'][this.typeOfAnimation]);
   }
 
   routeIndex(): void {
     this.router.navigate(['/']);
+  }
+
+  initItemList(): void {
+    let i = 0;
+    const MAX = 20;
+    for (i; i < MAX; i++) {
+      this.itemList.push(i);
+    }
   }
 
   updateProceduresList(procedures: object[]): void {
@@ -65,8 +78,10 @@ export class AlgoVizPageComponent implements OnInit {
   updateCurrentInstructionsCode(instructions: object[]) {
     let i = 0;
     const max = instructions.length;
+    this.currentInstructionAudio = instructions[0]['comment-audio'];
     while (i < max) {
-      const line = {current: i === 0 ? true : false, code: instructions[i]['code'] };
+      const current = i === 0 ? true : false;
+      const line = {current: current, code: instructions[i]['code'] };
       this.currentProceduerCode.push(line);
       i++;
     }

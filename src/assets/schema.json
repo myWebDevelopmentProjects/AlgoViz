@@ -11,7 +11,7 @@
             {
               "current": true,
               "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "comment-audio": "/assets/audio/Matt Skyer - Our Galaxy.mp3",
               "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
               "action": "setNewElem"
             },
@@ -19,7 +19,7 @@
               "current": false,
               "comment-text": "1 Метод добавления нового элемента в BST-дерево",
               "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-              "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
+              "code": "<span class=\"grey\">Root</span> <- <span class=\"blue\">call</span> <strong>Insert_Node</strong>(<em>Root, New_Elem</em>)",
               "action": "setNewElem"
             }
           ]

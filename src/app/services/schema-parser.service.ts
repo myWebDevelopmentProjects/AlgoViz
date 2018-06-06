@@ -13,7 +13,6 @@ export class SchemaParserService {
       const filePath = `assets/schema.json`;
       this.http.get<{}>(filePath).subscribe(
         schema => {
-          // this.data = Object.assign({}, schema || {});
           this.data = schema;
           resolve(this.data);
         },

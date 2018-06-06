@@ -128,6 +128,13 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="0e8c959f370f65ce5945f1a354b8eb5462942644" datatype="html">
+        <source>copy_block</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/dialog-window.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
 
     </body>
   </file>
