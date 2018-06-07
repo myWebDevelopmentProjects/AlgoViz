@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewChild, ElementRef, Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogWindowService } from '../../services/dialog-window.service';
 import { TranslateService } from '../../services/translate.service';
 import { SchemaParserService } from '../../services/schema-parser.service';
+
 
 @Component({
   selector: 'app-algo-viz-page',
   templateUrl: './algo-viz-page.component.html',
   styleUrls: ['./algo-viz-page.component.scss']
 })
-export class AlgoVizPageComponent implements OnInit {
+export class AlgoVizPageComponent implements OnInit  {
+  @ViewChild('item_list_01') private item_list_01: ElementRef;
 
   typeOfAnimation: string;
   currentProceduerName: string;
   currentProceduerCode: any[] = [];
+  currentInstructionComment: string;
   proceduersList: any[] = [];
   currentInstructionAudio: string;
 
@@ -25,7 +28,8 @@ export class AlgoVizPageComponent implements OnInit {
     private router: Router,
     private dialogWindowService: DialogWindowService,
     private translate: TranslateService,
-    private schema: SchemaParserService
+    private schema: SchemaParserService,
+    private renderer: Renderer2,
   ) {
       console.log('translate', translate.data);
       console.log('schema ', schema.data['schema']);
@@ -33,6 +37,13 @@ export class AlgoVizPageComponent implements OnInit {
       this.currentProceduerName = 'Default';
       this.initItemList();
       this.updateCurrentProcedureCode(schema.data['schema'][this.typeOfAnimation]);
+  }
+
+  setAnimation(elem: ElementRef, animation_name: string): void {
+    // elem.nativeElement.style.animation = animation_name;
+    const element = this.renderer.selectRootElement('.item_list_01');
+    this.renderer.setStyle(element, 'animation', animation_name);
+    console.log(element);
   }
 
   routeIndex(): void {
@@ -91,6 +102,7 @@ export class AlgoVizPageComponent implements OnInit {
     this.dialogWindowService.msg = this.translate.data['ERROR'];
     this.dialogWindowService.call_showWindow();
   }
+
 
   ngOnInit() {
     this.typeOfAnimation = this.route.snapshot.paramMap.get('type');

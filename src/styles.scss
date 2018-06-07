@@ -143,9 +143,6 @@ body {
 
           item-list:nth-child(1) {
             position: relative;
-            animation: slide_to_root_01 3.0s forwards;
-            -webkit-animation: slide_to_root_01 3.0s forwards;
-
           }
           item-list.init {
             background: url(assets/img/svg/bst-item-init.svg);

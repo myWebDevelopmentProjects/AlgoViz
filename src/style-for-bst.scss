@@ -8,7 +8,7 @@ $xCoefLeft_level3:    82px;
 $x0_level4:           0px;
 $xCoefLeft_level4:    41px;
 
-$bst_item_display: /*none*/ block;
+$bst_item_display: none /*block*/;
 $bst_item_background_normal:  url(assets/img/svg/bst-item-normal.svg);
 
 $level_4_left_item_before_background: #000;
@@ -121,7 +121,7 @@ bst-structure {
     bst-item#bst_item_4{
         left: $x0_level2 + $xCoefLeft_level2 * 1;
         top:103px;
-        background:  $bst_item_background_normal;
+        background: $bst_item_background_normal;
         background-repeat: no-repeat;
         background-size: contain;
         display: $bst_item_display;
@@ -143,7 +143,7 @@ bst-structure {
     bst-item#bst_item_5{
         left: $x0_level2 + $xCoefLeft_level2 * 2;
         top:103px;
-        background:  $bst_item_background_normal;
+        background: $bst_item_background_normal;
         background-repeat: no-repeat;
         background-size: contain;
         display: $bst_item_display;

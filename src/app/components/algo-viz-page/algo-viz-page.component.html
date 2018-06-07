@@ -14,7 +14,27 @@
       <active-field>
         <p>Елементи:</p>
           <items-wrapper>
-            <item-list class="init" *ngFor="let item of itemList">{{ item }}</item-list>
+            <item-list class="init item_list_01" #item_list_01>{{ itemList[0] }}</item-list>
+            <item-list class="init" >{{ itemList[1] }}</item-list>
+            <item-list class="init" >{{ itemList[2] }}</item-list>
+            <item-list class="init" >{{ itemList[3] }}</item-list>
+            <item-list class="init" >{{ itemList[4] }}</item-list>
+            <item-list class="init" >{{ itemList[5] }}</item-list>
+            <item-list class="init" >{{ itemList[6] }}</item-list>
+            <item-list class="init" >{{ itemList[7] }}</item-list>
+            <item-list class="init" >{{ itemList[8] }}</item-list>
+            <item-list class="init" >{{ itemList[9] }}</item-list>
+            <item-list class="init" >{{ itemList[10] }}</item-list>
+            <item-list class="init" >{{ itemList[11] }}</item-list>
+            <item-list class="init" >{{ itemList[12] }}</item-list>
+            <item-list class="init" >{{ itemList[13] }}</item-list>
+            <item-list class="init" >{{ itemList[14] }}</item-list>
+            <item-list class="init" >{{ itemList[15] }}</item-list>
+            <item-list class="init" >{{ itemList[16] }}</item-list>
+            <item-list class="init" >{{ itemList[17] }}</item-list>
+            <item-list class="init" >{{ itemList[18] }}</item-list>
+            <item-list class="init" >{{ itemList[19] }}</item-list>
+            <!-- item-list class="init" *ngFor="let item of itemList">{{ item }}</item-list -->
             <!-- item-list class="compare">1</item-list -->
           </items-wrapper>
 
@@ -94,7 +114,7 @@
   </view-row>
   <view-row>
     <help-btn><help-btn-icon>&nbsp;</help-btn-icon><span i18n>help</span></help-btn>
-    <control-btn (click)="callDialogWindow()" class="start"><span i18n>start</span><control-icon>&nbsp;</control-icon></control-btn>
+    <control-btn (click)="setAnimation(item_list_01, 'slide_to_root_01 3.0s forwards')" class="start"><span i18n>start</span><control-icon>&nbsp;</control-icon></control-btn>
     <control-btn class="back"><control-icon>&nbsp;</control-icon><span i18n>back</span></control-btn>
     <control-btn class="pause"><span i18n>pause</span><control-icon>&nbsp;</control-icon></control-btn>
     <control-btn class="forward"><span i18n>forwards</span><control-icon>&nbsp;</control-icon></control-btn>
