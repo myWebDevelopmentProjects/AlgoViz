@@ -79,19 +79,20 @@ export class AlgoVizPageComponent implements OnInit  {
       if (current_procedure['procedures'][i].current) {
         const procedure = current_procedure['procedures'][i];
         this.currentProceduerName = procedure.id + procedure.args;
-        this.updateCurrentInstructionsCode(procedure.instructions);
+        this.updateCurrentInstructionsCode(procedure.instructions, 0 , 0, 0);
       }
       i++;
       break;
     }
    }
 
-  updateCurrentInstructionsCode(instructions: object[]) {
+  updateCurrentInstructionsCode(instructions: object[], audio: number, comment: number, currentLine: number) {
     let i = 0;
     const max = instructions.length;
     this.currentInstructionAudio = instructions[0]['comment-audio'];
+    this.currentInstructionComment = instructions[0]['comment-text'];
     while (i < max) {
-      const current = i === 0 ? true : false;
+      const current = i === currentLine ? true : false;
       const line = {current: current, code: instructions[i]['code'] };
       this.currentProceduerCode.push(line);
       i++;
