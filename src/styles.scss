@@ -141,9 +141,10 @@ body {
 
           @import "style-for-animations";
 
-          item-list:nth-child(1) {
+          item-list {
             position: relative;
           }
+
           item-list.init {
             background: url(assets/img/svg/bst-item-init.svg);
           }

@@ -1,8 +1,9 @@
-import { ViewChild, ElementRef, Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogWindowService } from '../../services/dialog-window.service';
 import { TranslateService } from '../../services/translate.service';
 import { SchemaParserService } from '../../services/schema-parser.service';
+import * as $ from 'jquery';
 
 
 @Component({
@@ -10,15 +11,17 @@ import { SchemaParserService } from '../../services/schema-parser.service';
   templateUrl: './algo-viz-page.component.html',
   styleUrls: ['./algo-viz-page.component.scss']
 })
+
 export class AlgoVizPageComponent implements OnInit  {
-  @ViewChild('item_list_01') private item_list_01: ElementRef;
 
   typeOfAnimation: string;
   currentProceduerName: string;
   currentProceduerCode: any[] = [];
   currentInstructionComment: string;
+  currentInstructionAction: string;
   proceduersList: any[] = [];
   currentInstructionAudio: string;
+  currentHandlingItem: number;
 
   // Масив для даних, якими буде заповнюватись дерево
   itemList: number[] = [];
@@ -28,22 +31,16 @@ export class AlgoVizPageComponent implements OnInit  {
     private router: Router,
     private dialogWindowService: DialogWindowService,
     private translate: TranslateService,
-    private schema: SchemaParserService,
-    private renderer: Renderer2,
+    private schema: SchemaParserService
   ) {
+
       console.log('translate', translate.data);
       console.log('schema ', schema.data['schema']);
       this.typeOfAnimation = this.route.snapshot.paramMap.get('type');
       this.currentProceduerName = 'Default';
+      this.currentHandlingItem = 0;
       this.initItemList();
       this.updateCurrentProcedureCode(schema.data['schema'][this.typeOfAnimation]);
-  }
-
-  setAnimation(elem: ElementRef, animation_name: string): void {
-    // elem.nativeElement.style.animation = animation_name;
-    const element = this.renderer.selectRootElement('.item_list_01');
-    this.renderer.setStyle(element, 'animation', animation_name);
-    console.log(element);
   }
 
   routeIndex(): void {
@@ -91,6 +88,7 @@ export class AlgoVizPageComponent implements OnInit  {
     const max = instructions.length;
     this.currentInstructionAudio = instructions[0]['comment-audio'];
     this.currentInstructionComment = instructions[0]['comment-text'];
+    this.currentInstructionAction = instructions[0]['action'];
     while (i < max) {
       const current = i === currentLine ? true : false;
       const line = {current: current, code: instructions[i]['code'] };
@@ -104,9 +102,36 @@ export class AlgoVizPageComponent implements OnInit  {
     this.dialogWindowService.call_showWindow();
   }
 
-
   ngOnInit() {
-    this.typeOfAnimation = this.route.snapshot.paramMap.get('type');
+    var self = this;
+
+    // Функція для оновлення аудіофайлу коментарів
+    const call_new_Node = function() {
+        var item = $('.item_list_0' + self.currentHandlingItem);
+        item.animate({left: '352px', top: '48px'}, 'slow');
+        console.log(item.html());
+    };
+
+    // Функція для оновлення аудіофайлу коментарів
+    const Insert_Node = function() {
+        var item = $('.item_list_0' + self.currentHandlingItem);
+        item.animate({left: '352px', top: '48px'}, 'slow');
+        console.log(item.html());
+    };
+
+    const endProcedure = function(){
+      self.currentHandlingItem++;
+    }
+
+    $(document).ready(function(){
+      $('.start').click(function(){
+        setInterval(function(){
+          console.log(self.currentInstructionAction);
+        }, 5000);
+        console.log('start', self.currentHandlingItem);
+        call_new_Node();
+      });
+    });
   }
 
 }

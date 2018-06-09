@@ -13,14 +13,14 @@
               "comment-text": "1 Метод добавления нового элемента в BST-дерево",
               "comment-audio": "/assets/audio/Matt Skyer - Our Galaxy.mp3",
               "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
-              "action": "setNewElem"
+              "action": "call_new_Node"
             },
             {
               "current": false,
               "comment-text": "1 Метод добавления нового элемента в BST-дерево",
               "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
               "code": "<span class=\"grey\">Root</span> <- <span class=\"blue\">call</span> <strong>Insert_Node</strong>(<em>Root, New_Elem</em>)",
-              "action": "setNewElem"
+              "action": "Insert_Node"
             }
           ]
         },
