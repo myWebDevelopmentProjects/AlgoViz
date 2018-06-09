@@ -10,15 +10,16 @@
           "instructions": [
             {
               "current": true,
-              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-              "comment-audio": "/assets/audio/Matt Skyer - Our Galaxy.mp3",
+              "comment-text": "Створення нового елементу",
+              "comment-audio": "/assets/audio/INSERT_BST_01.mp3",
               "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
-              "action": "call_new_Node"
+              "action": "call_new_Node",
+              "args": "Root"
             },
             {
               "current": false,
-              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "comment-text": "Вставка нового елементу в корінь дерева",
+              "comment-audio": "/assets/audio/INSERT_BST_02.mp3",
               "code": "<span class=\"grey\">Root</span> <- <span class=\"blue\">call</span> <strong>Insert_Node</strong>(<em>Root, New_Elem</em>)",
               "action": "Insert_Node"
             }
@@ -28,6 +29,37 @@
           "current": false,
           "id": "INSERT_NODE",
           "args":"(Current,  New_Elem)",
+          "instruction": {
+            "_01": {
+              "comment-text": "Якщо поточний елемент дорівнює NULL",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "<![CDATA[ if Current = NULL then ]]>",
+              "action": "compare_Current_NULL"
+            },
+            "_02": {
+              "comment-text": "Повернути новий елемент",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "return  New_Elem",
+              "action": "return_New_Elem"
+            },
+            "_03": {
+              "comment-text": "Якщо новий елемент більше поточного",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "if data(New_Elem) < data(Current) then",
+              "action": "is_data_New_Eleme_more_data_Current"
+            },
+            "_04": {
+              "comment-text": "Якщо новий елемент більше поточного",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "left(Current) <- call Insert_Node(left(Current), New_Elem)",
+              "action": "is_data_New_Eleme_more_data_Current"
+            }
+          }
+        },
+        {
+          "current": false,
+          "id": "ROTATION_R",
+          "args":"(Current)",
           "instruction": {
             "_01": {
               "comment-text": "1 Метод добавления нового элемента в BST-дерево",

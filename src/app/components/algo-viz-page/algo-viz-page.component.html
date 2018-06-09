@@ -14,26 +14,26 @@
       <active-field>
         <p>Елементи:</p>
           <items-wrapper>
-            <item-list class="init item_list_00">{{ itemList[0] }}</item-list>
-            <item-list class="init item_list_01">{{ itemList[1] }}</item-list>
-            <item-list class="init item_list_02">{{ itemList[2] }}</item-list>
-            <item-list class="init item_list_03">{{ itemList[3] }}</item-list>
-            <item-list class="init item_list_04">{{ itemList[4] }}</item-list>
-            <item-list class="init item_list_05">{{ itemList[5] }}</item-list>
-            <item-list class="init item_list_06">{{ itemList[6] }}</item-list>
-            <item-list class="init item_list_07">{{ itemList[7] }}</item-list>
-            <item-list class="init item_list_08">{{ itemList[8] }}</item-list>
-            <item-list class="init item_list_09">{{ itemList[9] }}</item-list>
-            <item-list class="init item_list_10">{{ itemList[10] }}</item-list>
-            <item-list class="init item_list_11">{{ itemList[11] }}</item-list>
-            <item-list class="init item_list_12">{{ itemList[12] }}</item-list>
-            <item-list class="init item_list_13">{{ itemList[13] }}</item-list>
-            <item-list class="init item_list_14">{{ itemList[14] }}</item-list>
-            <item-list class="init item_list_15">{{ itemList[15] }}</item-list>
-            <item-list class="init item_list_16">{{ itemList[16] }}</item-list>
-            <item-list class="init item_list_17">{{ itemList[17] }}</item-list>
-            <item-list class="init item_list_18">{{ itemList[18] }}</item-list>
-            <item-list class="init item_list_19">{{ itemList[19] }}</item-list>
+            <item-list class="init item_list_00">{{ algovizEngineService.itemList[0] }}</item-list>
+            <item-list class="init item_list_01">{{ algovizEngineService.itemList[1] }}</item-list>
+            <item-list class="init item_list_02">{{ algovizEngineService.itemList[2] }}</item-list>
+            <item-list class="init item_list_03">{{ algovizEngineService.itemList[3] }}</item-list>
+            <item-list class="init item_list_04">{{ algovizEngineService.itemList[4] }}</item-list>
+            <item-list class="init item_list_05">{{ algovizEngineService.itemList[5] }}</item-list>
+            <item-list class="init item_list_06">{{ algovizEngineService.itemList[6] }}</item-list>
+            <item-list class="init item_list_07">{{ algovizEngineService.itemList[7] }}</item-list>
+            <item-list class="init item_list_08">{{ algovizEngineService.itemList[8] }}</item-list>
+            <item-list class="init item_list_09">{{ algovizEngineService.itemList[9] }}</item-list>
+            <item-list class="init item_list_10">{{ algovizEngineService.itemList[10] }}</item-list>
+            <item-list class="init item_list_11">{{ algovizEngineService.itemList[11] }}</item-list>
+            <item-list class="init item_list_12">{{ algovizEngineService.itemList[12] }}</item-list>
+            <item-list class="init item_list_13">{{ algovizEngineService.itemList[13] }}</item-list>
+            <item-list class="init item_list_14">{{ algovizEngineService.itemList[14] }}</item-list>
+            <item-list class="init item_list_15">{{ algovizEngineService.itemList[15] }}</item-list>
+            <item-list class="init item_list_16">{{ algovizEngineService.itemList[16] }}</item-list>
+            <item-list class="init item_list_17">{{ algovizEngineService.itemList[17] }}</item-list>
+            <item-list class="init item_list_18">{{ algovizEngineService.itemList[18] }}</item-list>
+            <item-list class="init item_list_19">{{ algovizEngineService.itemList[19] }}</item-list>
             <!-- item-list class="init" *ngFor="let item of itemList">{{ item }}</item-list -->
             <!-- item-list class="compare">1</item-list -->
           </items-wrapper>
@@ -82,10 +82,10 @@
       <comments-block>
         <title-block class="width-100-percent"><span i18n>code_line_comment</span></title-block>
         <active-field>
-          {{ currentInstructionComment }}
+          {{ algovizEngineService.currentInstructionComment }}
         </active-field>
         <audio class="audio-comment" controls>
-          <source src="{{ currentInstructionAudio}}">
+          <source src="{{ algovizEngineService.currentInstructionAudio}}">
           Браузер не підтримує програвання звукових файлів!
         </audio>
       </comments-block>
@@ -97,7 +97,7 @@
       <title-block class="width-100-percent"><arrow-down>&nbsp;</arrow-down><span class="localization" i18n>current_procedure</span><span class="js-procedure-name red">{{ currentProceduerName }}</span></title-block>
       <active-field>
         <ol>
-          <li [class.active]="item.current" *ngFor="let item of currentProceduerCode" [innerHTML]="item.code"></li>
+          <li [class.active]="item.current" *ngFor="let item of algovizEngineService.currentProceduerCode" [innerHTML]="item.code"></li>
         </ol>
       </active-field>
     </data-pseudocode>
@@ -106,7 +106,7 @@
         <title-block class="width-100-percent"><span i18n>procedures</span>&nbsp;</title-block>
         <active-field>
           <ul>
-            <li [class.current]="item.current" *ngFor="let item of proceduersList"><span [innerHTML]="item.id"></span></li>
+            <li [class.current]="item.current" *ngFor="let item of algovizEngineService.proceduersList"><span [innerHTML]="item.id"></span></li>
           </ul>
         </active-field>
       </procedures-block>

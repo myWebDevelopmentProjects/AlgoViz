@@ -1,12 +1,12 @@
-<content-view>
+<content-view xmlns:javascript="http://www.w3.org/1999/xhtml">
   <view-header>
     <title-block class="width-100-percent" i18n><text-part>web_app_title</text-part></title-block>
   </view-header>
   <view-page>
     <content-of-page [innerHTML]="content_index_page">&nbsp;</content-of-page>
     <ul class="algorithms-nav">
-      <li *ngFor="let item of algo_viz_nav">
-        <a (click)="routeAlgoVizPage(item.link)"><text-part>{{ item.name }}</text-part></a>
+      <li *ngFor="let item of algo_viz_nav" (click)="routeAlgoVizPage(item.link)">
+        <a href="javascript:void(0)" ><text-part>{{ item.name }}</text-part></a>
       </li>
     </ul>
   </view-page>

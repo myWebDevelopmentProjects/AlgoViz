@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DialogWindowService } from '../../services/dialog-window.service';
 import { TranslateService } from '../../services/translate.service';
 import { SchemaParserService } from '../../services/schema-parser.service';
+import { AlgovizEngineService } from '../../services/algoviz-engine.service';
+import { BstNonBalancingAdd } from '../../algorithms/bst-non-balancing-add';
 import * as $ from 'jquery';
 
 
@@ -15,44 +17,33 @@ import * as $ from 'jquery';
 export class AlgoVizPageComponent implements OnInit  {
 
   typeOfAnimation: string;
-  currentProceduerName: string;
-  currentProceduerCode: any[] = [];
-  currentInstructionComment: string;
-  currentInstructionAction: string;
-  proceduersList: any[] = [];
-  currentInstructionAudio: string;
-  currentHandlingItem: number;
+  bstNonBalancingAdd: BstNonBalancingAdd;
+  currentAnimation = [];
 
   // Масив для даних, якими буде заповнюватись дерево
-  itemList: number[] = [];
+
+  algovizEngineService: AlgovizEngineService;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private dialogWindowService: DialogWindowService,
     private translate: TranslateService,
+
     private schema: SchemaParserService
   ) {
-
+      this.algovizEngineService = new AlgovizEngineService();
+      this.bstNonBalancingAdd = new BstNonBalancingAdd(this.algovizEngineService, this.translate);
       console.log('translate', translate.data);
       console.log('schema ', schema.data['schema']);
       this.typeOfAnimation = this.route.snapshot.paramMap.get('type');
-      this.currentProceduerName = 'Default';
-      this.currentHandlingItem = 0;
-      this.initItemList();
+      this.algovizEngineService.currentProceduerName = 'Default';
+      this.algovizEngineService.currentHandlingItem = 0;
       this.updateCurrentProcedureCode(schema.data['schema'][this.typeOfAnimation]);
   }
 
   routeIndex(): void {
     this.router.navigate(['/']);
-  }
-
-  initItemList(): void {
-    let i = 0;
-    const MAX = 20;
-    for (i; i < MAX; i++) {
-      this.itemList.push(i);
-    }
   }
 
   updateProceduresList(procedures: object[]): void {
@@ -61,7 +52,7 @@ export class AlgoVizPageComponent implements OnInit  {
     const max = procedures.length;
     while (i < max) {
       const line = {current: procedures[i]['current'], id: procedures[i]['id'] };
-      this.proceduersList.push(line);
+      this.algovizEngineService.proceduersList.push(line);
       i++;
     }
   }
@@ -75,7 +66,7 @@ export class AlgoVizPageComponent implements OnInit  {
     while (i < max) {
       if (current_procedure['procedures'][i].current) {
         const procedure = current_procedure['procedures'][i];
-        this.currentProceduerName = procedure.id + procedure.args;
+        this.algovizEngineService.currentProceduerName = procedure.id + procedure.args;
         this.updateCurrentInstructionsCode(procedure.instructions, 0 , 0, 0);
       }
       i++;
@@ -86,13 +77,13 @@ export class AlgoVizPageComponent implements OnInit  {
   updateCurrentInstructionsCode(instructions: object[], audio: number, comment: number, currentLine: number) {
     let i = 0;
     const max = instructions.length;
-    this.currentInstructionAudio = instructions[0]['comment-audio'];
-    this.currentInstructionComment = instructions[0]['comment-text'];
-    this.currentInstructionAction = instructions[0]['action'];
+    this.algovizEngineService.currentInstructionAudio = instructions[0]['comment-audio'];
+    this.algovizEngineService.currentInstructionComment = instructions[0]['comment-text'];
+    this.algovizEngineService.currentInstructionAction = instructions[0]['action'];
     while (i < max) {
       const current = i === currentLine ? true : false;
       const line = {current: current, code: instructions[i]['code'] };
-      this.currentProceduerCode.push(line);
+      this.algovizEngineService.currentProceduerCode.push(line);
       i++;
     }
   }
@@ -107,28 +98,32 @@ export class AlgoVizPageComponent implements OnInit  {
 
     // Функція для оновлення аудіофайлу коментарів
     const call_new_Node = function() {
-        var item = $('.item_list_0' + self.currentHandlingItem);
+        var item = $('.item_list_0' + self.algovizEngineService.currentHandlingItem);
         item.animate({left: '352px', top: '48px'}, 'slow');
         console.log(item.html());
+      self.algovizEngineService.currentHandlingItem++;
     };
 
     // Функція для оновлення аудіофайлу коментарів
     const Insert_Node = function() {
-        var item = $('.item_list_0' + self.currentHandlingItem);
+        var item = $('.item_list_0' + self.algovizEngineService.currentHandlingItem);
         item.animate({left: '352px', top: '48px'}, 'slow');
         console.log(item.html());
+      self.algovizEngineService.currentHandlingItem++;
     };
 
     const endProcedure = function(){
-      self.currentHandlingItem++;
+
     }
 
     $(document).ready(function(){
       $('.start').click(function(){
+        /*
         setInterval(function(){
           console.log(self.currentInstructionAction);
         }, 5000);
-        console.log('start', self.currentHandlingItem);
+        */
+        console.log('start', self.algovizEngineService.currentHandlingItem);
         call_new_Node();
       });
     });
