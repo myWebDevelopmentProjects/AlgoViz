@@ -19,6 +19,7 @@ export class AlgoVizPageComponent implements OnInit  {
   typeOfAnimation: string;
   bstNonBalancingAdd: BstNonBalancingAdd;
   currentAnimation = [];
+  currentAnimationStep: number;
 
   // Масив для даних, якими буде заповнюватись дерево
 
@@ -32,6 +33,7 @@ export class AlgoVizPageComponent implements OnInit  {
 
     private schema: SchemaParserService
   ) {
+      this.currentAnimationStep = 0;
       this.algovizEngineService = new AlgovizEngineService();
       this.bstNonBalancingAdd = new BstNonBalancingAdd(this.algovizEngineService, this.translate);
       console.log('translate', translate.data);
@@ -94,37 +96,47 @@ export class AlgoVizPageComponent implements OnInit  {
   }
 
   ngOnInit() {
-    var self = this;
+    const self = this;
+
+    const app = {
+      timer: null,
+      startAnimation: function() {
+        console.log('animation :: START');
+        app.timer = setInterval(function(){
+          console.log('current frame:', self.currentAnimationStep);
+          console.log('currentFrame', self.algovizEngineService.animation[self.currentAnimationStep]);
+          if (typeof self.algovizEngineService.animation[self.currentAnimationStep] === 'undefined') {
+            app.stopAnimation();
+          }
+          self.currentAnimationStep++;
+        }, 2000);
+      },
+      stopAnimation: function(){
+        console.log('animation :: STOP');
+        clearInterval(app.timer);
+      },
+      updateKeyframeForeards: function() {
+        console.log('currentFrame', self.algovizEngineService.animation[self.currentAnimationStep]);
+        self.currentAnimationStep++;
+      }
+    };
 
     // Функція для оновлення аудіофайлу коментарів
     const call_new_Node = function() {
-        var item = $('.item_list_0' + self.algovizEngineService.currentHandlingItem);
+        const item = $('.item_list_0' + self.algovizEngineService.currentHandlingItem);
         item.animate({left: '352px', top: '48px'}, 'slow');
         console.log(item.html());
       self.algovizEngineService.currentHandlingItem++;
     };
 
-    // Функція для оновлення аудіофайлу коментарів
-    const Insert_Node = function() {
-        var item = $('.item_list_0' + self.algovizEngineService.currentHandlingItem);
-        item.animate({left: '352px', top: '48px'}, 'slow');
-        console.log(item.html());
-      self.algovizEngineService.currentHandlingItem++;
-    };
-
-    const endProcedure = function(){
-
-    }
 
     $(document).ready(function(){
       $('.start').click(function(){
-        /*
-        setInterval(function(){
-          console.log(self.currentInstructionAction);
-        }, 5000);
-        */
-        console.log('start', self.algovizEngineService.currentHandlingItem);
-        call_new_Node();
+        console.log('start', self.algovizEngineService.animation);
+        app.startAnimation();
+      });
+      $('.stop').click(function(){
+        app.stopAnimation();
       });
     });
   }

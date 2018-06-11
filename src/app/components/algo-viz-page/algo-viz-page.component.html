@@ -83,7 +83,10 @@
         <title-block class="width-100-percent"><span i18n>code_line_comment</span></title-block>
         <active-field>
           {{ algovizEngineService.currentInstructionComment }}
+
         </active-field>
+        <p><span i18n>current_step</span>: {{ currentAnimationStep }}</p>
+        <p><span i18n>all_steps</span>: {{ algovizEngineService.animation.length}}</p>
         <audio class="audio-comment" controls>
           <source src="{{ algovizEngineService.currentInstructionAudio}}">
           Браузер не підтримує програвання звукових файлів!

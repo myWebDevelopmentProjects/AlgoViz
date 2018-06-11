@@ -130,6 +130,22 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="22a1efa717533e9c3b9bcfaa41761fe32737fb40" datatype="html">
+        <source>all_steps:</source>
+        <target>Всього кроків</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="07160c45f029b1619d00e4ff47e5580183baa2e9" datatype="html">
+        <source>current</source>
+        <target>Поточний крок</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/algo-viz-page.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="afa4c0c0166031b02fb6d003dabda1ea9ddaed37" datatype="html">
         <source>error</source>
         <target>Помилка!</target>
