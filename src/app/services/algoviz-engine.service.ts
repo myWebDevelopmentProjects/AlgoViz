@@ -3,19 +3,21 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AlgovizEngineService {
 
-  currentProceduerName: string;
-  currentProceduerCode: any[] = [];
+  currentProcedureName: string;
+  currentProcedureCode: any[] = [];
   currentInstructionComment: string;
   currentInstructionAction: string;
 
   proceduersList: any[] = [];
   currentInstructionAudio: string;
-  currentHandlingItem: number;
   itemList: number[] = [];
   animation: object[] = [];
 
+  timePeriod: number;
+
   constructor() {
     this.initItemList();
+    this.timePeriod = 1000;
   }
 
   initItemList(): void {

@@ -7,7 +7,6 @@ import { AlgovizEngineService } from '../../services/algoviz-engine.service';
 import { BstNonBalancingAdd } from '../../algorithms/bst-non-balancing-add';
 import * as $ from 'jquery';
 
-
 @Component({
   selector: 'app-algo-viz-page',
   templateUrl: './algo-viz-page.component.html',
@@ -18,74 +17,81 @@ export class AlgoVizPageComponent implements OnInit  {
 
   typeOfAnimation: string;
   bstNonBalancingAdd: BstNonBalancingAdd;
-  currentAnimation = [];
   currentAnimationStep: number;
-
-  // Масив для даних, якими буде заповнюватись дерево
-
+  currentKeyFrameNumber: number;
   algovizEngineService: AlgovizEngineService;
+  // блокування зайвих натсикувань на кнопку СТАРТ
+  isAnimationIaActive: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private dialogWindowService: DialogWindowService,
     private translate: TranslateService,
-
     private schema: SchemaParserService
   ) {
+      this.isAnimationIaActive = false;
       this.currentAnimationStep = 0;
+      // для відображення крок анімації починається з одиниці
+      this.currentKeyFrameNumber = 1;
       this.algovizEngineService = new AlgovizEngineService();
-      this.bstNonBalancingAdd = new BstNonBalancingAdd(this.algovizEngineService, this.translate);
-      console.log('translate', translate.data);
+      this.bstNonBalancingAdd = new BstNonBalancingAdd(this.algovizEngineService, this.translate, this.schema);
       console.log('schema ', schema.data['schema']);
       this.typeOfAnimation = this.route.snapshot.paramMap.get('type');
-      this.algovizEngineService.currentProceduerName = 'Default';
-      this.algovizEngineService.currentHandlingItem = 0;
-      this.updateCurrentProcedureCode(schema.data['schema'][this.typeOfAnimation]);
+      this.updateAlgoVizView();
   }
 
   routeIndex(): void {
     this.router.navigate(['/']);
   }
 
-  updateProceduresList(procedures: object[]): void {
+  updateProceduresList(procedures: object[], id: string): void {
     console.log('procedures', procedures);
+    this.algovizEngineService.proceduersList = [];
     let i = 0;
     const max = procedures.length;
     while (i < max) {
-      const line = {current: procedures[i]['current'], id: procedures[i]['id'] };
+      let current: boolean;
+      if (procedures[i]['id'] === id) {
+        current = true;
+      } else {
+        current = false;
+      }
+      const line = {current: current, id: procedures[i]['id'] };
       this.algovizEngineService.proceduersList.push(line);
       i++;
     }
   }
 
-  updateCurrentProcedureCode(current_procedure: object): void {
-    let i = 0;
+  /**
+   *  метод для постійного оновлення поточного кадру анімації
+   */
+  updateAlgoVizView(): void {
+    const current_procedure = this.schema.data['schema'][this.typeOfAnimation];
+    const currentAnimationStep = this.algovizEngineService.animation[this.currentAnimationStep];
     const max = current_procedure['procedures'].length;
     //
-    this.updateProceduresList(current_procedure['procedures']);
+    this.updateProceduresList(current_procedure['procedures'], this.algovizEngineService.animation[this.currentAnimationStep]['id']);
     //
-    while (i < max) {
-      if (current_procedure['procedures'][i].current) {
-        const procedure = current_procedure['procedures'][i];
-        this.algovizEngineService.currentProceduerName = procedure.id + procedure.args;
-        this.updateCurrentInstructionsCode(procedure.instructions, 0 , 0, 0);
-      }
-      i++;
-      break;
-    }
+    console.log(this.algovizEngineService.animation[this.currentAnimationStep]);
+
+    this.algovizEngineService.currentInstructionAudio = currentAnimationStep['commentAudio'];
+    this.algovizEngineService.currentInstructionComment = currentAnimationStep['commentText'];
+    this.algovizEngineService.currentInstructionAction = '';
+    this.algovizEngineService.currentProcedureName = currentAnimationStep['id'] + currentAnimationStep['args'];
+    this.updateCurrentInstructionsCode(
+      current_procedure['procedures'][currentAnimationStep['instructions']]['instructions'],
+      currentAnimationStep['instructonActive']);
+
    }
 
-  updateCurrentInstructionsCode(instructions: object[], audio: number, comment: number, currentLine: number) {
+  updateCurrentInstructionsCode(instructions: object[], currentLine: number) {
+    this.algovizEngineService.currentProcedureCode = [];
     let i = 0;
     const max = instructions.length;
-    this.algovizEngineService.currentInstructionAudio = instructions[0]['comment-audio'];
-    this.algovizEngineService.currentInstructionComment = instructions[0]['comment-text'];
-    this.algovizEngineService.currentInstructionAction = instructions[0]['action'];
     while (i < max) {
-      const current = i === currentLine ? true : false;
-      const line = {current: current, code: instructions[i]['code'] };
-      this.algovizEngineService.currentProceduerCode.push(line);
+      const line = {current: i === currentLine, code: instructions[i]['code'] };
+      this.algovizEngineService.currentProcedureCode.push(line);
       i++;
     }
   }
@@ -101,39 +107,87 @@ export class AlgoVizPageComponent implements OnInit  {
     const app = {
       timer: null,
       startAnimation: function() {
+        if (!self.isAnimationIaActive) {
+          self.isAnimationIaActive = true;
+        } else {
+          return;
+        }
+        self.isAnimationIaActive = true;
         console.log('animation :: START');
         app.timer = setInterval(function(){
-          console.log('current frame:', self.currentAnimationStep);
-          console.log('currentFrame', self.algovizEngineService.animation[self.currentAnimationStep]);
-          if (typeof self.algovizEngineService.animation[self.currentAnimationStep] === 'undefined') {
-            app.stopAnimation();
-          }
+          app.playStep();
+          app.checkIfAnimationIsOver();
           self.currentAnimationStep++;
-        }, 2000);
+          self.currentKeyFrameNumber++;
+        }, self.algovizEngineService.timePeriod);
       },
-      stopAnimation: function(){
+      stepBack: function(){
+        app.stopAnimation();
+        console.log('animation :: STEP BACK');
+        if (self.currentAnimationStep === 0) {
+          return;
+        } else {
+          self.currentAnimationStep--;
+          self.currentKeyFrameNumber--;
+          app.playStep();
+          return;
+        }
+      },
+      stopAnimation: function() {
         console.log('animation :: STOP');
+        if (self.isAnimationIaActive) {
+          self.isAnimationIaActive = false;
+        } else {
+          return;
+        }
         clearInterval(app.timer);
       },
-      updateKeyframeForeards: function() {
-        console.log('currentFrame', self.algovizEngineService.animation[self.currentAnimationStep]);
+      stepForwards: function(){
+        app.stopAnimation();
+        console.log('animation :: STEP FORWARDS');
+        if (self.currentAnimationStep >= (self.algovizEngineService.animation.length - 1)) {
+          return;
+        }
         self.currentAnimationStep++;
-      }
-    };
-
-    // Функція для оновлення аудіофайлу коментарів
-    const call_new_Node = function() {
+        self.currentKeyFrameNumber++;
+        app.playStep();
+      },
+      checkIfAnimationIsOver: function(){
+        if (
+          typeof self.algovizEngineService.animation[self.currentAnimationStep] === 'undefined' ||
+          (self.algovizEngineService.animation.length - 1) === self.currentAnimationStep
+        ) {
+          app.stopAnimation();
+          self.currentAnimationStep = 0;
+          self.currentKeyFrameNumber = 1;
+          return;
+        }
+      },
+      playStep: function() {
+        console.log('current frame:', self.currentAnimationStep);
+        console.log('currentFrame', self.algovizEngineService.animation[self.currentAnimationStep]);
+        self.updateAlgoVizView();
+        /*
         const item = $('.item_list_0' + self.algovizEngineService.currentHandlingItem);
         item.animate({left: '352px', top: '48px'}, 'slow');
         console.log(item.html());
-      self.algovizEngineService.currentHandlingItem++;
+        self.algovizEngineService.currentHandlingItem++;
+        */
+      }
     };
-
 
     $(document).ready(function(){
       $('.start').click(function(){
-        console.log('start', self.algovizEngineService.animation);
         app.startAnimation();
+      });
+      $('.back').click(function(){
+        app.stepBack();
+      });
+      $('.pause').click(function(){
+        app.stopAnimation();
+      });
+      $('.forward').click(function(){
+        app.stepForwards();
       });
       $('.stop').click(function(){
         app.stopAnimation();

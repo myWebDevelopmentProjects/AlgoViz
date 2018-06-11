@@ -1,6 +1,4 @@
 {
   "ERROR": "TEXT of current error",
-  "CONTENT_INDEX_PAGE": "<strong>Content og index page</strong>",
-  "CREATE-NEW-ELEMENT": "Creating new element",
-  "CURRENT-ELEMENT-TO-BE-ROOT": "Current element turn to be root of BST"
+  "CONTENT_INDEX_PAGE": "<strong>Content og index page</strong>"
 }
