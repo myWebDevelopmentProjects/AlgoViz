@@ -26,8 +26,8 @@ export class BstNonBalancingAdd {
     private translate: TranslateService,
     private schema: SchemaParserService
   ) {
+    this.algovizEngineService.BST = null;
     this.Root = null;
-    console.log(algovizEngineService.itemList);
     this.initAlgorithm();
   }
 
@@ -43,8 +43,6 @@ export class BstNonBalancingAdd {
       this.INSERT_BST(itemList[i], className);
       i++;
     }
-    console.log(this.Root);
-    console.log(this.algovizEngineService.animation);
   }
 
   insertKeyFrame(keyFrame: object): void {
@@ -64,6 +62,7 @@ export class BstNonBalancingAdd {
       instructonActive: 0,
       commentText: instructions[0]['comment-text'],
       commentAudio: instructions[0]['comment-audio'],
+      commands: [],
       BST: this.Root
     });
     // додавання ключового кадру -- КІНЕЦЬ
@@ -76,6 +75,7 @@ export class BstNonBalancingAdd {
       commentText: instructions[1]['comment-text'],
       commentAudio: instructions[1]['comment-audio'],
       activeElements: [NewElem.className],
+      commands: ['updateBST'],
       BST: this.Root
     });
     // додавання ключового кадру -- КІНЕЦЬ
@@ -95,6 +95,20 @@ export class BstNonBalancingAdd {
         commentText: instructions[0]['comment-text'],
         commentAudio: instructions[0]['comment-audio'],
         activeElements: [NewElem.className],
+        commands: [],
+        BST: this.Root
+      });
+      // додавання ключового кадру -- КІНЕЦЬ
+      // додавання ключового кадру -- СТАРТ
+      this.insertKeyFrame({
+        id: 'INSERT_NODE',
+        args: args,
+        instructions: 1,
+        instructonActive: 1,
+        commentText: instructions[1]['comment-text'],
+        commentAudio: instructions[1]['comment-audio'],
+        activeElements: [NewElem.className],
+        commands: ['updateBST'],
         BST: this.Root
       });
       // додавання ключового кадру -- КІНЕЦЬ
@@ -114,6 +128,7 @@ export class BstNonBalancingAdd {
         commentText: instructions[1]['comment-text'],
         commentAudio: instructions[1]['comment-audio'],
         activeElements: [NewElem.className, Current.className],
+        commands: ['updateBST'],
         BST: this.Root
       });
       // додавання ключового кадру -- КІНЕЦЬ
@@ -126,6 +141,7 @@ export class BstNonBalancingAdd {
         commentText: instructions[2]['comment-text'],
         commentAudio: instructions[2]['comment-audio'],
         activeElements: NewElem.className,
+        commands: ['updateBST'],
         BST: this.Root
       });
       // додавання ключового кадру -- КІНЕЦЬ
@@ -140,6 +156,7 @@ export class BstNonBalancingAdd {
         instructonActive: 3,
         commentText: instructions[3]['comment-text'],
         commentAudio: instructions[3]['comment-audio'],
+        commands: ['updateBST'],
         activeElements: NewElem.className,
         BST: this.Root
       });
@@ -154,6 +171,7 @@ export class BstNonBalancingAdd {
         commentText: instructions[4]['comment-text'],
         commentAudio: instructions[4]['comment-audio'],
         activeElements: [NewElem.className],
+        commands: ['updateBST'],
         BST: this.Root
       });
       // додавання ключового кадру -- КІНЕЦЬ
@@ -166,13 +184,14 @@ export class BstNonBalancingAdd {
     const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][2]['args'];
     const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][2]['instructions'];
     this.insertKeyFrame({
-      id: 'INSERT_NODE',
+      id: 'ROTATION_R',
       args: args,
       instructions: 1,
-      instructonActive: 4,
-      commentText: instructions[4]['comment-text'],
-      commentAudio: instructions[4]['comment-audio'],
+      instructonActive: 0,
+      commentText: instructions[0]['comment-text'],
+      commentAudio: instructions[0]['comment-audio'],
       activeElements: Current.className,
+      commands: ['updateBST'],
       BST: this.Root
     });
     // додавання ключового кадру -- КІНЕЦЬ

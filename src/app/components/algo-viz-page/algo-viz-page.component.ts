@@ -22,6 +22,7 @@ export class AlgoVizPageComponent implements OnInit  {
   algovizEngineService: AlgovizEngineService;
   // блокування зайвих натсикувань на кнопку СТАРТ
   isAnimationIaActive: boolean;
+  BST: object [] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -45,8 +46,12 @@ export class AlgoVizPageComponent implements OnInit  {
     this.router.navigate(['/']);
   }
 
+  /**
+   * Оновлення списку процедур
+   * @param {Object[]} procedures
+   * @param {string} id
+   */
   updateProceduresList(procedures: object[], id: string): void {
-    console.log('procedures', procedures);
     this.algovizEngineService.proceduersList = [];
     let i = 0;
     const max = procedures.length;
@@ -73,8 +78,6 @@ export class AlgoVizPageComponent implements OnInit  {
     //
     this.updateProceduresList(currentProcedure['procedures'], this.algovizEngineService.animation[this.currentAnimationStep]['id']);
     //
-    console.log(this.algovizEngineService.animation[this.currentAnimationStep]);
-
     this.algovizEngineService.currentInstructionAudio = currentAnimationStep['commentAudio'];
     this.algovizEngineService.currentInstructionComment = currentAnimationStep['commentText'];
     this.algovizEngineService.currentInstructionAction = '';
@@ -162,10 +165,23 @@ export class AlgoVizPageComponent implements OnInit  {
           return;
         }
       },
+      updateBST: function(tree: object, bst: object[], levelNumber: string, nodeNumber: string) {
+        if (tree === null) {
+          return;
+        }
+        const _BST = bst;
+        const level_number = levelNumber + '_0';
+        // let node_number = 0;
+        console.log(self.algovizEngineService.animation[self.currentAnimationStep]['BST']);
+        _BST.push({display: 'block', className: levelNumber, nodeValue: tree['value']});
+        app.updateBST(tree['node_left'], _BST, level_number, '_0');
+        app.updateBST(tree['node_right'], _BST, level_number, '_1');
+        console.log(_BST);
+        self.BST = _BST;
+      },
       playStep: function() {
         self.updateAlgoVizView();
-        console.log(self.algovizEngineService.animation[self.currentAnimationStep]['BST']);
-        let i = 0;
+         let i = 0;
         const elems = self.algovizEngineService.animation[self.currentAnimationStep]['activeElements'];
         const max = elems.length;
         $('item-list').each(function () {
@@ -173,10 +189,16 @@ export class AlgoVizPageComponent implements OnInit  {
         });
         for (i; i < max; i++) {
           $('.' + elems[i].toString())
-            .addClass('active')
-            .animate({left: '352px', top: '48px'}, 'slow');
-          ;
+            .addClass('active');
+            // .animate({left: '352px', top: '48px'}, 'slow');
           i++;
+        }
+        //
+        const commands = self.algovizEngineService.animation[self.currentAnimationStep]['commands'];
+        if (commands.length > 0 ) {
+          if (commands.indexOf('updateBST') !== -1) {
+            app.updateBST(self.algovizEngineService.animation[self.currentAnimationStep]['BST'], [], '', '_0');
+          }
         }
       }
     };

@@ -12,12 +12,16 @@ export class AlgovizEngineService {
   currentInstructionAudio: string;
   itemList: number[] = [];
   animation: object[] = [];
-
+  BST: object[] = [];
   timePeriod: number;
 
   constructor() {
     this.initItemList();
     this.timePeriod = 1000;
+  }
+
+  initBST() {
+
   }
 
   initItemList(): void {

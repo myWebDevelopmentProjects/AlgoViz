@@ -25,7 +25,6 @@ export class IndexComponent implements OnInit {
 
   getAlgoVizNav(): void {
     const alorithms = this.schema.data['schema'];
-    console.log('schema ', alorithms);
     for (const item in alorithms) {
       const link_nav = {link: '', name: ''};
       if (alorithms.hasOwnProperty(item)) {
