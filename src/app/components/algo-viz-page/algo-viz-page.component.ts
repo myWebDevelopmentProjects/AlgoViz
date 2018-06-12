@@ -67,11 +67,11 @@ export class AlgoVizPageComponent implements OnInit  {
    *  метод для постійного оновлення поточного кадру анімації
    */
   updateAlgoVizView(): void {
-    const current_procedure = this.schema.data['schema'][this.typeOfAnimation];
+    const currentProcedure = this.schema.data['schema'][this.typeOfAnimation];
     const currentAnimationStep = this.algovizEngineService.animation[this.currentAnimationStep];
-    const max = current_procedure['procedures'].length;
+    const max = currentProcedure['procedures'].length;
     //
-    this.updateProceduresList(current_procedure['procedures'], this.algovizEngineService.animation[this.currentAnimationStep]['id']);
+    this.updateProceduresList(currentProcedure['procedures'], this.algovizEngineService.animation[this.currentAnimationStep]['id']);
     //
     console.log(this.algovizEngineService.animation[this.currentAnimationStep]);
 
@@ -80,9 +80,8 @@ export class AlgoVizPageComponent implements OnInit  {
     this.algovizEngineService.currentInstructionAction = '';
     this.algovizEngineService.currentProcedureName = currentAnimationStep['id'] + currentAnimationStep['args'];
     this.updateCurrentInstructionsCode(
-      current_procedure['procedures'][currentAnimationStep['instructions']]['instructions'],
+      currentProcedure['procedures'][currentAnimationStep['instructions']]['instructions'],
       currentAnimationStep['instructonActive']);
-
    }
 
   updateCurrentInstructionsCode(instructions: object[], currentLine: number) {
@@ -164,15 +163,21 @@ export class AlgoVizPageComponent implements OnInit  {
         }
       },
       playStep: function() {
-        console.log('current frame:', self.currentAnimationStep);
-        console.log('currentFrame', self.algovizEngineService.animation[self.currentAnimationStep]['BST']);
         self.updateAlgoVizView();
-        /*
-        const item = $('.item_list_0' + self.algovizEngineService.currentHandlingItem);
-        item.animate({left: '352px', top: '48px'}, 'slow');
-        console.log(item.html());
-        self.algovizEngineService.currentHandlingItem++;
-        */
+        console.log(self.algovizEngineService.animation[self.currentAnimationStep]['BST']);
+        let i = 0;
+        const elems = self.algovizEngineService.animation[self.currentAnimationStep]['activeElements'];
+        const max = elems.length;
+        $('item-list').each(function () {
+          $(this).removeClass('active');
+        });
+        for (i; i < max; i++) {
+          $('.' + elems[i].toString())
+            .addClass('active')
+            .animate({left: '352px', top: '48px'}, 'slow');
+          ;
+          i++;
+        }
       }
     };
 

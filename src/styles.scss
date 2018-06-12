@@ -148,6 +148,9 @@ body {
           item-list.init {
             background: url(assets/img/svg/bst-item-init.svg);
           }
+          item-list.active {
+            background: url(assets/img/svg/item-active.svg);
+          }
           item-list.compare {
             background: url(assets/img/svg/bst-item-compare.svg);
           }
