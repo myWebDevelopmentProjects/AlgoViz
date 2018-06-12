@@ -165,7 +165,7 @@ export class AlgoVizPageComponent implements OnInit  {
       },
       playStep: function() {
         console.log('current frame:', self.currentAnimationStep);
-        console.log('currentFrame', self.algovizEngineService.animation[self.currentAnimationStep]);
+        console.log('currentFrame', self.algovizEngineService.animation[self.currentAnimationStep]['BST']);
         self.updateAlgoVizView();
         /*
         const item = $('.item_list_0' + self.algovizEngineService.currentHandlingItem);
