@@ -5,6 +5,10 @@ import { TranslateService } from '../../services/translate.service';
 import { SchemaParserService } from '../../services/schema-parser.service';
 import { AlgovizEngineService } from '../../services/algoviz-engine.service';
 import { BstNonBalancingAdd } from '../../algorithms/bst-non-balancing-add';
+import { BstLocalBalancingAmortization } from '../../algorithms/bst-local-balancing-amortization';
+import { BstLocalBalancingOptimization } from '../../algorithms/bst-local-balancing-optimization';
+import { BstLocalBalancingRandom } from '../../algorithms/bst-local-balancing-random';
+
 import * as $ from 'jquery';
 
 @Component({
@@ -17,10 +21,13 @@ export class AlgoVizPageComponent implements OnInit  {
 
   typeOfAnimation: string;
   bstNonBalancingAdd: BstNonBalancingAdd;
+  bstLocalBalancingAmortization: BstLocalBalancingAmortization;
+  bstLocalBalancingOptimization: BstLocalBalancingOptimization;
+  bstLocalBalancingRandom: BstLocalBalancingRandom;
   currentAnimationStep: number;
   currentKeyFrameNumber: number;
-  algovizEngineService: AlgovizEngineService;
-  // блокування зайвих натсикувань на кнопку СТАРТ
+  items: number[];
+ // блокування зайвих натсикувань на кнопку СТАРТ
   isAnimationIaActive: boolean;
   BST: object [] = [];
 
@@ -29,16 +36,37 @@ export class AlgoVizPageComponent implements OnInit  {
     private router: Router,
     private dialogWindowService: DialogWindowService,
     private translate: TranslateService,
+    private algovizEngineService: AlgovizEngineService,
     private schema: SchemaParserService
   ) {
       this.isAnimationIaActive = false;
+    // this.algovizEngineService = new AlgovizEngineService();
+    this.items = algovizEngineService.itemList;
       this.currentAnimationStep = 0;
       // для відображення крок анімації починається з одиниці
       this.currentKeyFrameNumber = 1;
-      this.algovizEngineService = new AlgovizEngineService();
-      this.bstNonBalancingAdd = new BstNonBalancingAdd(this.algovizEngineService, this.translate, this.schema);
-      console.log('schema ', schema.data['schema']);
+    // this.algovizEngineService = new AlgovizEngineService();
       this.typeOfAnimation = this.route.snapshot.paramMap.get('type');
+      switch (this.typeOfAnimation) {
+        case 'bst_non_balancing_add':
+          this.bstNonBalancingAdd = new BstNonBalancingAdd(algovizEngineService, this.translate, this.schema);
+          console.log('schema ', schema.data['schema']);
+          break;
+        case 'bst_local_balancing_random':
+          this.bstLocalBalancingRandom = new BstLocalBalancingRandom(algovizEngineService, this.translate, this.schema);
+          console.log('schema ', schema.data['schema']);
+          break;
+        case 'bst_local_balancing_amortization':
+          this.bstLocalBalancingAmortization = new BstLocalBalancingAmortization(algovizEngineService, this.translate, this.schema);
+          console.log('schema ', schema.data['schema']);
+          break;
+        case 'bst_local_balancing_optimization':
+          this.bstLocalBalancingOptimization = new BstLocalBalancingOptimization(algovizEngineService, this.translate, this.schema);
+          console.log('schema ', schema.data['schema']);
+          break;
+        default:
+          console.log('no typeOfAnimation');
+      }
       this.updateAlgoVizView();
   }
 
@@ -72,6 +100,7 @@ export class AlgoVizPageComponent implements OnInit  {
    *  метод для постійного оновлення поточного кадру анімації
    */
   updateAlgoVizView(): void {
+    console.log(this.algovizEngineService.animation);
     const currentProcedure = this.schema.data['schema'][this.typeOfAnimation];
     const currentAnimationStep = this.algovizEngineService.animation[this.currentAnimationStep];
     const max = currentProcedure['procedures'].length;
@@ -173,7 +202,7 @@ export class AlgoVizPageComponent implements OnInit  {
         const level_number = levelNumber + '_0';
         // let node_number = 0;
         console.log(self.algovizEngineService.animation[self.currentAnimationStep]['BST']);
-        _BST.push({display: 'block', className: levelNumber, nodeValue: tree['value']});
+        _BST.push({display: 'block', className: level_number, nodeValue: tree['value']});
         app.updateBST(tree['node_left'], _BST, level_number, '_0');
         app.updateBST(tree['node_right'], _BST, level_number, '_1');
         console.log(_BST);
@@ -188,7 +217,7 @@ export class AlgoVizPageComponent implements OnInit  {
           $(this).removeClass('active');
         });
         for (i; i < max; i++) {
-          $('.' + elems[i].toString())
+          $('.' + elems[i])
             .addClass('active');
             // .animate({left: '352px', top: '48px'}, 'slow');
           i++;
