@@ -1,4 +1,5 @@
 {
   "ERROR": "TEXT of current error",
+  "ERROR_OF_INPUT": "TEXT of input error",
   "CONTENT_INDEX_PAGE": "<strong>Content og index page</strong>"
 }

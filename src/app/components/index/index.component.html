@@ -4,6 +4,10 @@
   </view-header>
   <view-page>
     <content-of-page [innerHTML]="content_index_page">&nbsp;</content-of-page>
+    <div>
+      <p i18n>item_list_description</p>
+      <input *ngFor="let item of items; let i = index;" (keyup)="onKey($event, i)" type="text" value="{{ item }}"/>
+    </div>
     <ul class="algorithms-nav">
       <li *ngFor="let item of algo_viz_nav" (click)="routeAlgoVizPage(item.link)">
         <a href="javascript:void(0)" ><text-part>{{ item.name }}</text-part></a>

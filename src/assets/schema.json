@@ -28,27 +28,27 @@
             {
               "comment-text": "Якщо поточний елемент дорівнює NULL",
               "comment-audio": "/assets/audio/INSERT_NODE_00.mp3",
-              "code": "if Current = NULL then"
+              "code": "<span class=\"blue\">if</span> Current = NULL <span class=\"blue\">then</span>"
             },
             {
               "comment-text": "Повернути новий елемент",
               "comment-audio": "/assets/audio/INSERT_NODE_01.mp3",
-              "code": "return  New_Elem"
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"blue\">return</span>  New_Elem"
             },
             {
               "comment-text": "Якщо новий елемент більше поточного",
               "comment-audio": "/assets/audio/INSERT_NODE_02.mp3",
-              "code": "if data(New_Elem) < data(Current) then"
+              "code": "<span class=\"blue\">if</span> <span class=\"grey\">data</span>(New_Elem) < <span class=\"grey\">data</span>(Current) <span class=\"blue\">then</span>"
             },
             {
               "comment-text": "Рекурсивний виклик функції Insert_Node для лівого піддерева",
               "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-              "code": "left(Current) <- call Insert_Node(left(Current), New_Elem)"
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"grey\">left</span>(Current) <- <span class=\"blue\">call</span> Insert_Node(<span class=\"blue\">left</span>(Current), New_Elem)"
             },
             {
               "comment-text": "Виконується правий поворот поточного піддрерва",
               "comment-audio": "",
-              "code": "Current <- call Rotation_R(Current)"
+              "code": "&nbsp;&nbsp;&nbsp;Current <- <span class=\"blue\">call</span> Rotation_R(Current)"
             },
             {
               "comment-text": "якщо",
@@ -58,104 +58,531 @@
             {
               "comment-text": "Рекурсивний виклик функції Insert_Node для правого піддерева",
               "comment-audio": "",
-              "code": "right(Current) <- call Insert_Node(right(Current), New_Elem)"
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"grey\">right</span>(Current) <- <span class=\"blue\">call</span> Insert_Node(<span class=\"grey\">right</span>(Current), New_Elem)"
             },
             {
               "comment-text": "Виконується лівий поворот поточного піддрерва",
               "comment-audio": "",
-              "code": "Current <- call Rotation_L(Current)"
+              "code": "&nbsp;&nbsp;&nbsp;Current <- <span class=\"blue\">call</span> Rotation_L(Current)"
             },
             {
               "comment-text": "Повертається поточне піддерево",
               "comment-audio": "",
-              "code": "return Current"
+              "code": "<span class=\"blue\">return</span> Current"
             }
           ]
         },
         {
           "id": "ROTATION_R",
           "args":"(Current)",
-          "instructions": {
-            "_01": {
-              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-              "code": "<![CDATA[ if Current = NULL then ]]>",
+          "instructions": [
+            {
+                "comment-text": "Створюємо тимчасовмй елемент, який зберігає значення лівого піддерева поточного вузла",
+                "comment-audio": "",
+                "code": "Temp <- <span class=\"grey\">left</span>(Current)",
+                "action": "setNewElem"
+            },
+            {
+                "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+                "comment-audio": "",
+                "code": "<span class=\"grey\">left</span>(Current) <- <span class=\"grey\">right</span>(Temp)",
+                "action": "setNewElem"
+            },
+            {
+                "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+                "comment-audio": "",
+                "code": "<span class=\"grey\">righ</span>t(Temp) <- Current",
+                "action": "setNewElem"
+            },
+            {
+                "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+                "comment-audio": "",
+                "code": "Current <- Temp ",
+                "action": "setNewElem"
+            },
+            {
+                "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+                "comment-audio": "",
+                "code": "<span class=\"blue\">return</span> Current",
+                "action": "setNewElem"
+            }
+          ]
+        },
+        {
+          "id": "ROTATION_L",
+          "args":"(Current)",
+          "instructions": [
+            {
+              "comment-text": "Створюємо тимчасовмй елемент, який зберігає значення лівого піддерева поточного вузла",
+              "comment-audio": "",
+              "code": "Temp <- <span class=\"grey\">right</span>(Current)",
               "action": "setNewElem"
             },
-            "_02": {
+            {
               "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-              "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">right</span>(Current) <- <span class=\"grey\">left</span>(Temp)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">left</span>t(Temp) <- Current",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "Current <- Temp ",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current",
               "action": "setNewElem"
             }
-          }
+          ]
         }
       ]
     },
     "bst_local_balancing_random": {
       "name": "Локальне балансування BST :: РАНДОМІЗАЦІЯ",
-      "procedure": {
-        "id": "INSERT_BST",
-        "args": "(Root, Object)",
-        "instructions": [
-         {
-            "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-            "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-            "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
-            "action": "setNewElem"
-          },
-         {
-            "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-            "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-            "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
-            "action": "setNewElem"
-          }
-        ]
-      }
+      "procedures":[
+        {
+          "id": "INSERT_BST",
+          "args": "(Root, Object)",
+          "instructions": [
+            {
+              "current": true,
+              "comment-text": "Створення нового елементу",
+              "comment-audio": "/assets/audio/INSERT_BST_01.mp3",
+              "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)"
+            },
+            {
+              "current": false,
+              "comment-text": "Вставка нового елементу в корінь дерева",
+              "comment-audio": "/assets/audio/INSERT_BST_02.mp3",
+              "code": "<span class=\"grey\">Root</span> <- <span class=\"blue\">call</span> <strong>Insert_Node</strong>(<em>Root, New_Elem</em>)"
+            }
+          ]
+        },
+        {
+          "id": "INSERT_NODE",
+          "args":"(Current,  New_Elem)",
+          "instructions": [
+            {
+              "comment-text": "Якщо поточний елемент дорівнює NULL",
+              "comment-audio": "/assets/audio/INSERT_NODE_00.mp3",
+              "code": "<span class=\"blue\">if</span> Current = NULL <span class=\"blue\">then</span>"
+            },
+            {
+              "comment-text": "Повернути новий елемент",
+              "comment-audio": "/assets/audio/INSERT_NODE_01.mp3",
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"blue\">return</span>  New_Elem"
+            },
+            {
+              "comment-text": "Якщо новий елемент більше поточного",
+              "comment-audio": "/assets/audio/INSERT_NODE_02.mp3",
+              "code": "<span class=\"blue\">if</span> <span class=\"grey\">data</span>(New_Elem) < <span class=\"grey\">data</span>(Current) <span class=\"blue\">then</span>"
+            },
+            {
+              "comment-text": "Рекурсивний виклик функції Insert_Node для лівого піддерева",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"grey\">left</span>(Current) <- <span class=\"blue\">call</span> Insert_Node(<span class=\"blue\">left</span>(Current), New_Elem)"
+            },
+            {
+              "comment-text": "Виконується правий поворот поточного піддрерва",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;Current <- <span class=\"blue\">call</span> Rotation_R(Current)"
+            },
+            {
+              "comment-text": "якщо",
+              "comment-audio": "",
+              "code": "else"
+            },
+            {
+              "comment-text": "Рекурсивний виклик функції Insert_Node для правого піддерева",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"grey\">right</span>(Current) <- <span class=\"blue\">call</span> Insert_Node(<span class=\"grey\">right</span>(Current), New_Elem)"
+            },
+            {
+              "comment-text": "Виконується лівий поворот поточного піддрерва",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;Current <- <span class=\"blue\">call</span> Rotation_L(Current)"
+            },
+            {
+              "comment-text": "Повертається поточне піддерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current"
+            }
+          ]
+        },
+        {
+          "id": "ROTATION_R",
+          "args":"(Current)",
+          "instructions": [
+            {
+              "comment-text": "Створюємо тимчасовмй елемент, який зберігає значення лівого піддерева поточного вузла",
+              "comment-audio": "",
+              "code": "Temp <- <span class=\"grey\">left</span>(Current)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">left</span>(Current) <- <span class=\"grey\">right</span>(Temp)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">righ</span>t(Temp) <- Current",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "Current <- Temp ",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current",
+              "action": "setNewElem"
+            }
+          ]
+        },
+        {
+          "id": "ROTATION_L",
+          "args":"(Current)",
+          "instructions": [
+            {
+              "comment-text": "Створюємо тимчасовмй елемент, який зберігає значення лівого піддерева поточного вузла",
+              "comment-audio": "",
+              "code": "Temp <- <span class=\"grey\">right</span>(Current)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">right</span>(Current) <- <span class=\"grey\">left</span>(Temp)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">left</span>t(Temp) <- Current",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "Current <- Temp ",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current",
+              "action": "setNewElem"
+            }
+          ]
+        }
+      ]
     },
     "bst_local_balancing_amortization": {
       "name": "Локальне балансування BST :: АМОРТИЗАЦІЯ",
-      "procedure": {
-        "current": true,
-        "id": "INSERT_BST",
-        "args": "(Root, Object)",
-        "instructions": [
-         {
-            "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-            "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-            "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
-            "action": "setNewElem"
-          },
-          {
-            "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-            "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-            "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
-            "action": "setNewElem"
-          }
-        ]
-      }
+      "procedures":[
+        {
+          "id": "INSERT_BST",
+          "args": "(Root, Object)",
+          "instructions": [
+            {
+              "current": true,
+              "comment-text": "Створення нового елементу",
+              "comment-audio": "/assets/audio/INSERT_BST_01.mp3",
+              "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)"
+            },
+            {
+              "current": false,
+              "comment-text": "Вставка нового елементу в корінь дерева",
+              "comment-audio": "/assets/audio/INSERT_BST_02.mp3",
+              "code": "<span class=\"grey\">Root</span> <- <span class=\"blue\">call</span> <strong>Insert_Node</strong>(<em>Root, New_Elem</em>)"
+            }
+          ]
+        },
+        {
+          "id": "INSERT_NODE",
+          "args":"(Current,  New_Elem)",
+          "instructions": [
+            {
+              "comment-text": "Якщо поточний елемент дорівнює NULL",
+              "comment-audio": "/assets/audio/INSERT_NODE_00.mp3",
+              "code": "<span class=\"blue\">if</span> Current = NULL <span class=\"blue\">then</span>"
+            },
+            {
+              "comment-text": "Повернути новий елемент",
+              "comment-audio": "/assets/audio/INSERT_NODE_01.mp3",
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"blue\">return</span>  New_Elem"
+            },
+            {
+              "comment-text": "Якщо новий елемент більше поточного",
+              "comment-audio": "/assets/audio/INSERT_NODE_02.mp3",
+              "code": "<span class=\"blue\">if</span> <span class=\"grey\">data</span>(New_Elem) < <span class=\"grey\">data</span>(Current) <span class=\"blue\">then</span>"
+            },
+            {
+              "comment-text": "Рекурсивний виклик функції Insert_Node для лівого піддерева",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"grey\">left</span>(Current) <- <span class=\"blue\">call</span> Insert_Node(<span class=\"blue\">left</span>(Current), New_Elem)"
+            },
+            {
+              "comment-text": "Виконується правий поворот поточного піддрерва",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;Current <- <span class=\"blue\">call</span> Rotation_R(Current)"
+            },
+            {
+              "comment-text": "якщо",
+              "comment-audio": "",
+              "code": "else"
+            },
+            {
+              "comment-text": "Рекурсивний виклик функції Insert_Node для правого піддерева",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"grey\">right</span>(Current) <- <span class=\"blue\">call</span> Insert_Node(<span class=\"grey\">right</span>(Current), New_Elem)"
+            },
+            {
+              "comment-text": "Виконується лівий поворот поточного піддрерва",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;Current <- <span class=\"blue\">call</span> Rotation_L(Current)"
+            },
+            {
+              "comment-text": "Повертається поточне піддерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current"
+            }
+          ]
+        },
+        {
+          "id": "ROTATION_R",
+          "args":"(Current)",
+          "instructions": [
+            {
+              "comment-text": "Створюємо тимчасовмй елемент, який зберігає значення лівого піддерева поточного вузла",
+              "comment-audio": "",
+              "code": "Temp <- <span class=\"grey\">left</span>(Current)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">left</span>(Current) <- <span class=\"grey\">right</span>(Temp)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">righ</span>t(Temp) <- Current",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "Current <- Temp ",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current",
+              "action": "setNewElem"
+            }
+          ]
+        },
+        {
+          "id": "ROTATION_L",
+          "args":"(Current)",
+          "instructions": [
+            {
+              "comment-text": "Створюємо тимчасовмй елемент, який зберігає значення лівого піддерева поточного вузла",
+              "comment-audio": "",
+              "code": "Temp <- <span class=\"grey\">right</span>(Current)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">right</span>(Current) <- <span class=\"grey\">left</span>(Temp)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">left</span>t(Temp) <- Current",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "Current <- Temp ",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current",
+              "action": "setNewElem"
+            }
+          ]
+        }
+      ]
     },
     "bst_local_balancing_optimization": {
       "name": "Локальне балансування BST :: ОПТИМІЗАЦІЯ",
-      "procedure": {
-        "current": true,
-        "id": "INSERT_BST",
-        "args": "(Root, Object)",
-        "instructions": [
-         {
-            "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-            "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-            "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
-            "action": "setNewElem"
-          },
-          {
-            "comment-text": "1 Метод добавления нового элемента в BST-дерево",
-            "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-            "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)",
-            "action": "setNewElem"
-          }
-        ]
-      }
+      "procedures":[
+        {
+          "id": "INSERT_BST",
+          "args": "(Root, Object)",
+          "instructions": [
+            {
+              "current": true,
+              "comment-text": "Створення нового елементу",
+              "comment-audio": "/assets/audio/INSERT_BST_01.mp3",
+              "code": "<span class=\"grey\">New_Elem</span> <- call new Node(Object)"
+            },
+            {
+              "current": false,
+              "comment-text": "Вставка нового елементу в корінь дерева",
+              "comment-audio": "/assets/audio/INSERT_BST_02.mp3",
+              "code": "<span class=\"grey\">Root</span> <- <span class=\"blue\">call</span> <strong>Insert_Node</strong>(<em>Root, New_Elem</em>)"
+            }
+          ]
+        },
+        {
+          "id": "INSERT_NODE",
+          "args":"(Current,  New_Elem)",
+          "instructions": [
+            {
+              "comment-text": "Якщо поточний елемент дорівнює NULL",
+              "comment-audio": "/assets/audio/INSERT_NODE_00.mp3",
+              "code": "<span class=\"blue\">if</span> Current = NULL <span class=\"blue\">then</span>"
+            },
+            {
+              "comment-text": "Повернути новий елемент",
+              "comment-audio": "/assets/audio/INSERT_NODE_01.mp3",
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"blue\">return</span>  New_Elem"
+            },
+            {
+              "comment-text": "Якщо новий елемент більше поточного",
+              "comment-audio": "/assets/audio/INSERT_NODE_02.mp3",
+              "code": "<span class=\"blue\">if</span> <span class=\"grey\">data</span>(New_Elem) < <span class=\"grey\">data</span>(Current) <span class=\"blue\">then</span>"
+            },
+            {
+              "comment-text": "Рекурсивний виклик функції Insert_Node для лівого піддерева",
+              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"grey\">left</span>(Current) <- <span class=\"blue\">call</span> Insert_Node(<span class=\"blue\">left</span>(Current), New_Elem)"
+            },
+            {
+              "comment-text": "Виконується правий поворот поточного піддрерва",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;Current <- <span class=\"blue\">call</span> Rotation_R(Current)"
+            },
+            {
+              "comment-text": "якщо",
+              "comment-audio": "",
+              "code": "else"
+            },
+            {
+              "comment-text": "Рекурсивний виклик функції Insert_Node для правого піддерева",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"grey\">right</span>(Current) <- <span class=\"blue\">call</span> Insert_Node(<span class=\"grey\">right</span>(Current), New_Elem)"
+            },
+            {
+              "comment-text": "Виконується лівий поворот поточного піддрерва",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;Current <- <span class=\"blue\">call</span> Rotation_L(Current)"
+            },
+            {
+              "comment-text": "Повертається поточне піддерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current"
+            }
+          ]
+        },
+        {
+          "id": "ROTATION_R",
+          "args":"(Current)",
+          "instructions": [
+            {
+              "comment-text": "Створюємо тимчасовмй елемент, який зберігає значення лівого піддерева поточного вузла",
+              "comment-audio": "",
+              "code": "Temp <- <span class=\"grey\">left</span>(Current)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">left</span>(Current) <- <span class=\"grey\">right</span>(Temp)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">righ</span>t(Temp) <- Current",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "Current <- Temp ",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current",
+              "action": "setNewElem"
+            }
+          ]
+        },
+        {
+          "id": "ROTATION_L",
+          "args":"(Current)",
+          "instructions": [
+            {
+              "comment-text": "Створюємо тимчасовмй елемент, який зберігає значення лівого піддерева поточного вузла",
+              "comment-audio": "",
+              "code": "Temp <- <span class=\"grey\">right</span>(Current)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">right</span>(Current) <- <span class=\"grey\">left</span>(Temp)",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"grey\">left</span>t(Temp) <- Current",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "Current <- Temp ",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "1 Метод добавления нового элемента в BST-дерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current",
+              "action": "setNewElem"
+            }
+          ]
+        }
+      ]
     }
   }
 }

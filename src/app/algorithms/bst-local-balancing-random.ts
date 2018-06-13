@@ -9,7 +9,7 @@ export interface INode {
   node_right?: INode;
 }
 
-export class BstNonBalancingAdd {
+export class BstLocalBalancingRandom {
 
   Root: INode;
 
@@ -52,7 +52,7 @@ export class BstNonBalancingAdd {
   INSERT_BST(itemValue: number, className: string): void {
     const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][0]['args'];
     const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][0]['instructions'];
-    const NewElem = BstNonBalancingAdd.createNewNode(itemValue, className, null, null);
+    const NewElem = BstLocalBalancingRandom.createNewNode(itemValue, className, null, null);
     // додавання ключового кадру -- СТАРТ
     this.insertKeyFrame({
       id: 'INSERT_BST',
@@ -62,7 +62,7 @@ export class BstNonBalancingAdd {
       instructonActive: 0,
       commentText: instructions[0]['comment-text'],
       commentAudio: instructions[0]['comment-audio'],
-      commands: ['updateBST'],
+      commands: [],
       BST: this.Root
     });
     // додавання ключового кадру -- КІНЕЦЬ
@@ -83,12 +83,14 @@ export class BstNonBalancingAdd {
   }
 
   INSERT_NODE(Current: INode,  NewElem: INode): INode {
-    const currentProcedure = 1;
-    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['args'];
-    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['instructions'];
+    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][1]['args'];
+    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][1]['instructions'];
     if (Current === null) {
       // додавання ключового кадру -- СТАРТ
-      this.insertKeyFrame({id: 'INSERT_NODE', args: args, instructions: currentProcedure,
+      this.insertKeyFrame({
+        id: 'INSERT_NODE',
+        args: args,
+        instructions: 1,
         instructonActive: 0,
         commentText: instructions[0]['comment-text'],
         commentAudio: instructions[0]['comment-audio'],
@@ -101,7 +103,7 @@ export class BstNonBalancingAdd {
       this.insertKeyFrame({
         id: 'INSERT_NODE',
         args: args,
-        instructions: currentProcedure,
+        instructions: 1,
         instructonActive: 1,
         commentText: instructions[1]['comment-text'],
         commentAudio: instructions[1]['comment-audio'],
@@ -121,10 +123,10 @@ export class BstNonBalancingAdd {
       this.insertKeyFrame({
         id: 'INSERT_NODE',
         args: args,
-        instructions: currentProcedure,
-        instructonActive: 3,
-        commentText: instructions[3]['comment-text'],
-        commentAudio: instructions[3]['comment-audio'],
+        instructions: 1,
+        instructonActive: 1,
+        commentText: instructions[1]['comment-text'],
+        commentAudio: instructions[1]['comment-audio'],
         activeElements: [NewElem.className, Current.className],
         commands: ['updateBST'],
         BST: this.Root
@@ -134,10 +136,10 @@ export class BstNonBalancingAdd {
       this.insertKeyFrame({
         id: 'INSERT_NODE',
         args: args,
-        instructions: currentProcedure,
-        instructonActive: 4,
-        commentText: instructions[4]['comment-text'],
-        commentAudio: instructions[4]['comment-audio'],
+        instructions: 1,
+        instructonActive: 2,
+        commentText: instructions[2]['comment-text'],
+        commentAudio: instructions[2]['comment-audio'],
         activeElements: NewElem.className,
         commands: ['updateBST'],
         BST: this.Root
@@ -150,10 +152,10 @@ export class BstNonBalancingAdd {
       this.insertKeyFrame({
         id: 'INSERT_NODE',
         args: args,
-        instructions: currentProcedure,
-        instructonActive: 6,
-        commentText: instructions[6]['comment-text'],
-        commentAudio: instructions[6]['comment-audio'],
+        instructions: 1,
+        instructonActive: 3,
+        commentText: instructions[3]['comment-text'],
+        commentAudio: instructions[3]['comment-audio'],
         commands: ['updateBST'],
         activeElements: NewElem.className,
         BST: this.Root
@@ -164,10 +166,10 @@ export class BstNonBalancingAdd {
       this.insertKeyFrame({
         id: 'INSERT_NODE',
         args: args,
-        instructions: currentProcedure,
-        instructonActive: 7,
-        commentText: instructions[7]['comment-text'],
-        commentAudio: instructions[7]['comment-audio'],
+        instructions: 1,
+        instructonActive: 4,
+        commentText: instructions[4]['comment-text'],
+        commentAudio: instructions[4]['comment-audio'],
         activeElements: [NewElem.className],
         commands: ['updateBST'],
         BST: this.Root
@@ -179,13 +181,12 @@ export class BstNonBalancingAdd {
   }
 
   ROTATION_R(Current: INode): INode {
-    const currentProcedure = 2;
-    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['args'];
-    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['instructions'];
+    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][2]['args'];
+    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][2]['instructions'];
     this.insertKeyFrame({
       id: 'ROTATION_R',
       args: args,
-      instructions: currentProcedure,
+      instructions: 1,
       instructonActive: 0,
       commentText: instructions[0]['comment-text'],
       commentAudio: instructions[0]['comment-audio'],
@@ -202,20 +203,6 @@ export class BstNonBalancingAdd {
   }
 
   ROTATION_L(Current: INode): INode {
-    const currentProcedure = 3;
-    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['args'];
-    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['instructions'];
-    this.insertKeyFrame({
-      id: 'ROTATION_L',
-      args: args,
-      instructions: currentProcedure,
-      instructonActive: 0,
-      commentText: instructions[0]['comment-text'],
-      commentAudio: instructions[0]['comment-audio'],
-      activeElements: Current.className,
-      commands: ['updateBST'],
-      BST: this.Root
-    });
     const Temp =  Current.node_right;
     Current.node_right = Temp.node_left;
     Temp.node_left = Current;

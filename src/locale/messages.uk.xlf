@@ -18,6 +18,14 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="d5852fa78a365bf17b67189e8e3da3007fa18a21" datatype="html">
+        <source>item_list_description</source>
+        <target>Представлені нижче дані будуть передані до інформаційної структури. Пhи бажанні внести зміни, клікніть на цифру мишею та введіть нове цифрове значення</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/index/index.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="d78534b2d95d16d40021dfb9fd015a76572ceca6" datatype="html">
         <source>bst_local_balancing_random</source>
         <target>Локальне балансування BST :: РАНДОМІЗАЦІЯ</target>

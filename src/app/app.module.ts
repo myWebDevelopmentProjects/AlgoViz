@@ -6,6 +6,7 @@ import { AppRoutingModule } from './/app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { SchemaParserService } from './services/schema-parser.service';
+import { AlgovizEngineService } from './services/algoviz-engine.service';
 import { DialogWindowService } from './services/dialog-window.service';
 import { IndexComponent } from './components/index/index.component';
 import { AlgoVizPageComponent } from './components/algo-viz-page/algo-viz-page.component';
@@ -39,6 +40,7 @@ export function setupShemaFactory(
     SchemaParserService,
     DialogWindowService,
     TranslateService,
+    AlgovizEngineService,
     {
       provide: APP_INITIALIZER,
       useFactory: setupShemaFactory,

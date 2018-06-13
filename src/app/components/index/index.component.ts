@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '../../services/translate.service';
 import { SchemaParserService } from '../../services/schema-parser.service';
+import { AlgovizEngineService } from '../../services/algoviz-engine.service';
+import { DialogWindowService } from '../../services/dialog-window.service';
+
 
 @Component({
   selector: 'app-index',
@@ -13,14 +16,32 @@ export class IndexComponent implements OnInit {
   content_index_page: string;
   algo_viz_nav: any = [];
 
+  items: number[];
+
   constructor(
     private router: Router,
     private translate: TranslateService,
+    private dialogWindowService: DialogWindowService,
+    private algovizEngineService: AlgovizEngineService,
     private schema: SchemaParserService
   ) {
+
+    this.items = algovizEngineService.itemList;
     this.content_index_page = this.translate.data['CONTENT_INDEX_PAGE'];
     this.getAlgoVizNav();
 
+  }
+
+  onKey(event: any, i: number) { // without type info
+    const inputNumber = parseInt(event.target.value, 10);
+    if (this.algovizEngineService.itemList[i] === inputNumber) {
+      event.target.value = this.algovizEngineService.itemList[i];
+      this.dialogWindowService.msg = this.translate.data['ERROR_OF_INPUT'];
+      this.dialogWindowService.call_showWindow();
+      return;
+    } else {
+      this.algovizEngineService.itemList[i] = event.target.value;
+    }
   }
 
   getAlgoVizNav(): void {
