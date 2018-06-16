@@ -194,6 +194,13 @@ export class AlgoVizPageComponent implements OnInit  {
           return;
         }
       },
+      // Функція для оновлення аудіофайлу коментарів
+      updateAudio: function(sourceUrl) {
+       //
+        $('audio.audio-comment').empty();
+        const $source = $('<source/>')
+        $source.attr('src', sourceUrl).appendTo('audio.audio-comment');
+      },
       updateBST: function(tree: object, bst: object[], levelNumber: string, nodeNumber: string) {
         if (tree === null) {
           return;
@@ -202,6 +209,10 @@ export class AlgoVizPageComponent implements OnInit  {
         const level_number = levelNumber + '_0';
         // let node_number = 0;
         console.log(self.algovizEngineService.animation[self.currentAnimationStep]['BST']);
+        const audioURL = self.algovizEngineService.animation[self.currentAnimationStep]['commentAudio'];
+        if (audioURL !== '') {
+          app.updateAudio(audioURL);
+        }
         _BST.push({display: 'block', className: level_number, nodeValue: tree['value']});
         app.updateBST(tree['node_left'], _BST, level_number, '_0');
         app.updateBST(tree['node_right'], _BST, level_number, '_1');

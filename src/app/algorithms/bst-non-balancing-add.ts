@@ -45,6 +45,21 @@ export class BstNonBalancingAdd {
     }
   }
 
+  _insertKeyFrame (data: any[]) {
+    const keyFrame = {
+                  id: data[0],
+                args: data[1],
+      activeElements: data[2],
+        instructions: data[3],
+    instructonActive: data[4],
+         commentText: data[5]['comment-text'],
+        commentAudio: data[5]['comment-audio'],
+            commands: data[6],
+                 BST: this.Root
+    };
+    this.algovizEngineService.animation.push(keyFrame);
+  }
+
   insertKeyFrame(keyFrame: object): void {
     this.algovizEngineService.animation.push(keyFrame);
   }
@@ -53,147 +68,46 @@ export class BstNonBalancingAdd {
     const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][0]['args'];
     const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][0]['instructions'];
     const NewElem = BstNonBalancingAdd.createNewNode(itemValue, className, null, null);
-    // додавання ключового кадру -- СТАРТ
-    this.insertKeyFrame({
-      id: 'INSERT_BST',
-      args: args,
-      activeElements: [className],
-      instructions: 0,
-      instructonActive: 0,
-      commentText: instructions[0]['comment-text'],
-      commentAudio: instructions[0]['comment-audio'],
-      commands: ['updateBST'],
-      BST: this.Root
-    });
-    // додавання ключового кадру -- КІНЕЦЬ
-    // додавання ключового кадру -- СТАРТ
-    this.insertKeyFrame({
-      id: 'INSERT_BST',
-      args: args,
-      instructions: 0,
-      instructonActive: 1,
-      commentText: instructions[1]['comment-text'],
-      commentAudio: instructions[1]['comment-audio'],
-      activeElements: [NewElem.className],
-      commands: ['updateBST'],
-      BST: this.Root
-    });
-    // додавання ключового кадру -- КІНЕЦЬ
+    // додавання ключового кадру
+    this._insertKeyFrame(['INSERT_BST', args, [className], 0, 0, instructions[0], ['updateBST']]);
+    // додавання ключового кадру
+    this._insertKeyFrame(['INSERT_BST', args, [NewElem.className], 0, 1, instructions[1], ['updateBST'] ]);
     this.Root = this.INSERT_NODE(this.Root, NewElem);
   }
 
   INSERT_NODE(Current: INode,  NewElem: INode): INode {
-    const currentProcedure = 1;
-    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['args'];
-    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['instructions'];
+    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][1]['args'];
+    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][1]['instructions'];
     if (Current === null) {
-      // додавання ключового кадру -- СТАРТ
-      this.insertKeyFrame({id: 'INSERT_NODE', args: args, instructions: currentProcedure,
-        instructonActive: 0,
-        commentText: instructions[0]['comment-text'],
-        commentAudio: instructions[0]['comment-audio'],
-        activeElements: [NewElem.className],
-        commands: [],
-        BST: this.Root
-      });
-      // додавання ключового кадру -- КІНЕЦЬ
-      // додавання ключового кадру -- СТАРТ
-      this.insertKeyFrame({
-        id: 'INSERT_NODE',
-        args: args,
-        instructions: currentProcedure,
-        instructonActive: 1,
-        commentText: instructions[1]['comment-text'],
-        commentAudio: instructions[1]['comment-audio'],
-        activeElements: [NewElem.className],
-        commands: ['updateBST'],
-        BST: this.Root
-      });
-      // додавання ключового кадру -- КІНЕЦЬ
+      // додавання ключового кадру
+      this._insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 0, instructions[0], []]);
+      // додавання ключового кадру
+      this._insertKeyFrame([ 'INSERT_NODE', args, [NewElem.className], 1, 1, instructions[1], ['updateBST']]);
       return  NewElem;
     }
-    /*
-    if (NewElem === null) {
-      return  Current;
-    }*/
     if (NewElem.value < Current.value) {
-      // додавання ключового кадру -- СТАРТ
-      this.insertKeyFrame({
-        id: 'INSERT_NODE',
-        args: args,
-        instructions: currentProcedure,
-        instructonActive: 3,
-        commentText: instructions[3]['comment-text'],
-        commentAudio: instructions[3]['comment-audio'],
-        activeElements: [NewElem.className, Current.className],
-        commands: ['updateBST'],
-        BST: this.Root
-      });
-      // додавання ключового кадру -- КІНЕЦЬ
-      // додавання ключового кадру -- СТАРТ
-      this.insertKeyFrame({
-        id: 'INSERT_NODE',
-        args: args,
-        instructions: currentProcedure,
-        instructonActive: 4,
-        commentText: instructions[4]['comment-text'],
-        commentAudio: instructions[4]['comment-audio'],
-        activeElements: NewElem.className,
-        commands: ['updateBST'],
-        BST: this.Root
-      });
-      // додавання ключового кадру -- КІНЕЦЬ
+      // додавання ключового кадру
+      this._insertKeyFrame(['INSERT_NODE', args, [NewElem.className, Current.className], 1, 3, instructions[3], ['updateBST']]);
+      // додавання ключового кадру
+      this._insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 4, instructions[4], ['updateBST']]);
       Current.node_left = this.INSERT_NODE(Current.node_left, NewElem);
       Current = this.ROTATION_R(Current);
     } else {
-      // додавання ключового кадру -- СТАРТ
-      this.insertKeyFrame({
-        id: 'INSERT_NODE',
-        args: args,
-        instructions: currentProcedure,
-        instructonActive: 6,
-        commentText: instructions[6]['comment-text'],
-        commentAudio: instructions[6]['comment-audio'],
-        commands: ['updateBST'],
-        activeElements: NewElem.className,
-        BST: this.Root
-      });
-      // додавання ключового кадру -- КІНЕЦЬ
+      // додавання ключового кадру
+      this._insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 6, instructions[6], ['updateBST']]);
       Current.node_right = this.INSERT_NODE(Current.node_right, NewElem);
-      // додавання ключового кадру -- СТАРТ
-      this.insertKeyFrame({
-        id: 'INSERT_NODE',
-        args: args,
-        instructions: currentProcedure,
-        instructonActive: 7,
-        commentText: instructions[7]['comment-text'],
-        commentAudio: instructions[7]['comment-audio'],
-        activeElements: [NewElem.className],
-        commands: ['updateBST'],
-        BST: this.Root
-      });
-      // додавання ключового кадру -- КІНЕЦЬ
+      // додавання ключового кадру
+      this._insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 7, instructions[7], ['updateBST']]);
       Current = this.ROTATION_L(Current);
     }
     return Current;
   }
 
   ROTATION_R(Current: INode): INode {
-    const currentProcedure = 2;
-    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['args'];
-    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['instructions'];
-    this.insertKeyFrame({
-      id: 'ROTATION_R',
-      args: args,
-      instructions: currentProcedure,
-      instructonActive: 0,
-      commentText: instructions[0]['comment-text'],
-      commentAudio: instructions[0]['comment-audio'],
-      activeElements: Current.className,
-      commands: ['updateBST'],
-      BST: this.Root
-    });
-    // додавання ключового кадру -- КІНЕЦЬ
+    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][2]['args'];
+    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][2]['instructions'];
+    // додавання ключового кадру
+    this._insertKeyFrame(['ROTATION_R', args, [Current.className], 2, 0, instructions[0], ['updateBST']]);
     const Temp =  Current.node_left;
     Current.node_left = Temp.node_right;
     Temp.node_right = Current;
@@ -202,20 +116,9 @@ export class BstNonBalancingAdd {
   }
 
   ROTATION_L(Current: INode): INode {
-    const currentProcedure = 3;
-    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['args'];
-    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][currentProcedure]['instructions'];
-    this.insertKeyFrame({
-      id: 'ROTATION_L',
-      args: args,
-      instructions: currentProcedure,
-      instructonActive: 0,
-      commentText: instructions[0]['comment-text'],
-      commentAudio: instructions[0]['comment-audio'],
-      activeElements: Current.className,
-      commands: ['updateBST'],
-      BST: this.Root
-    });
+    const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][3]['args'];
+    const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][3]['instructions'];
+    this._insertKeyFrame(['ROTATION_L', args, [Current.className], 3, 0, instructions[0],  ['updateBST']]);
     const Temp =  Current.node_right;
     Current.node_right = Temp.node_left;
     Temp.node_left = Current;
