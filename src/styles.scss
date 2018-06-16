@@ -36,8 +36,8 @@ body {
     @import "style-for-boxes";
     display: block;
     padding: .3rem;
-    width: 1024px;
-    height: 762px;
+    width: 1300px;
+    height: 1072px;
     background: #c4c4c4;
     margin: .2rem auto;
     border-radius: 10px;
@@ -117,10 +117,12 @@ body {
       align-items: flex-start;
       justify-content: center;
       data-structure {
-        height: 22rem;
+        height: 711px;
         background: white;
         padding: 0;
         width: 70%;
+        background-image: url(assets/img/7-level-bst.jpg);
+        background-repeat: no-repeat;
         title-block {
           display: flex;
           align-items: center;
@@ -160,7 +162,7 @@ body {
         }
       }
       right-block {
-        width: 30%;
+        width: 23%;
         comments-block {
           height: 17rem;
           background: white;
@@ -282,28 +284,11 @@ body {
           }
         }
       }
-      help-btn {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 15%;
-        text-align: center;
-        cursor: pointer;
-        background: linear-gradient(#92c83d, #d5df23);
-        help-btn-icon {
-          width: 10%;
-          height: 1rem;
-        }
-        span {
-          width: 90%;
-          text-align: center;
-        }
-      }
       control-btn {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 12%;
+        width: 100%;
         color: white;
         cursor: pointer;
         background: linear-gradient(#29a1db, #2e3e9a);

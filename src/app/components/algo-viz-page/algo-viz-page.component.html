@@ -33,7 +33,7 @@
 
           <bst-item style="display: {{ node.displayNode }}" id="{{ node.className}}" *ngFor="let node of BST" [innerHTML]="node.nodeValue"></bst-item>
 
-          <!--
+          <!---->
           <bst-item  id="_0" class="_0" >0</bst-item>
 
           <bst-item  id="_0_0" class="_0_0" >1</bst-item>
@@ -69,7 +69,40 @@
           <bst-item  id="_0_1_1_0_1" class="_4_14" >-</bst-item>
           <bst-item  id="_0_1_1_1_0" class="_4_15" >-</bst-item>
           <bst-item  id="_0_1_1_1_1" class="_4_16" >-</bst-item>
--->
+
+          <bst-item  id="_0_0_0_0_0_0" class="_5_1" >15</bst-item>
+          <bst-item  id="_0_0_0_0_0_1" class="_5_2" >16</bst-item>
+          <bst-item  id="_0_0_0_0_1_0" class="_5_3" >17</bst-item>
+          <bst-item  id="_0_0_0_0_1_1" class="_5_4" >18</bst-item>
+          <bst-item  id="_0_0_0_1_0_0" class="_5_5" >19</bst-item>
+          <bst-item  id="_0_0_0_1_0_1" class="_5_6" >20</bst-item>
+          <bst-item  id="_0_0_0_1_1_0" class="_5_7" >-</bst-item>
+          <bst-item  id="_0_0_0_1_1_1" class="_5_8" >-</bst-item>
+          <bst-item  id="_0_0_1_0_0_0" class="_5_9" >-</bst-item>
+          <bst-item  id="_0_0_1_0_0_1" class="_5_10" >-</bst-item>
+          <bst-item  id="_0_0_1_0_1_0" class="_5_11" >-</bst-item>
+          <bst-item  id="_0_0_1_0_1_1" class="_5_12" >-</bst-item>
+          <bst-item  id="_0_0_1_1_0_0" class="_5_13" >-</bst-item>
+          <bst-item  id="_0_0_1_1_0_1" class="_5_14" >-</bst-item>
+          <bst-item  id="_0_0_1_1_1_0" class="_5_15" >-</bst-item>
+          <bst-item  id="_0_0_1_1_1_1" class="_5_16" >-</bst-item>
+          <bst-item  id="_0_1_0_0_0_0" class="_5_17" >15</bst-item>
+          <bst-item  id="_0_1_0_0_0_1" class="_5_18" >16</bst-item>
+          <bst-item  id="_0_1_0_0_1_0" class="_5_19" >17</bst-item>
+          <bst-item  id="_0_1_0_0_1_1" class="_5_20" >18</bst-item>
+          <bst-item  id="_0_1_0_1_0_0" class="_5_21" >19</bst-item>
+          <bst-item  id="_0_1_0_1_0_1" class="_5_22" >20</bst-item>
+          <bst-item  id="_0_1_0_1_1_0" class="_5_23" >-</bst-item>
+          <bst-item  id="_0_1_0_1_1_1" class="_5_24" >-</bst-item>
+          <bst-item  id="_0_1_1_0_0_0" class="_5_25" >-</bst-item>
+          <bst-item  id="_0_1_1_0_0_1" class="_5_26" >-</bst-item>
+          <bst-item  id="_0_1_1_0_1_0" class="_5_27" >-</bst-item>
+          <bst-item  id="_0_1_1_0_1_1" class="_5_28" >-</bst-item>
+          <bst-item  id="_0_1_1_1_0_0" class="_5_29" >-</bst-item>
+          <bst-item  id="_0_1_1_1_0_1" class="_5_30" >-</bst-item>
+          <bst-item  id="_0_1_1_1_1_0" class="_5_31" >-</bst-item>
+          <bst-item  id="_0_1_1_1_1_1" class="_5_32" >-</bst-item>
+
         </bst-structure>
       </active-field>
     </data-structure>
@@ -87,6 +120,13 @@
           Браузер не підтримує програвання звукових файлів!
         </audio>
       </comments-block>
+      <controls-block>
+        <control-btn class="start"><span i18n>start</span><control-icon>&nbsp;</control-icon></control-btn>
+        <control-btn class="back"><span i18n>back</span><control-icon>&nbsp;</control-icon></control-btn>
+        <control-btn class="pause"><span i18n>pause</span><control-icon>&nbsp;</control-icon></control-btn>
+        <control-btn class="forward"><span i18n>forwards</span><control-icon>&nbsp;</control-icon></control-btn>
+        <control-btn class="stop"><span i18n>stop</span><control-icon>&nbsp;</control-icon></control-btn>
+      </controls-block>
     </right-block>
   </view-row>
   <view-row>
@@ -109,13 +149,6 @@
         </active-field>
       </procedures-block>
     </right-block>
-  </view-row>
-  <view-row>
-    <control-btn class="start"><span i18n>start</span><control-icon>&nbsp;</control-icon></control-btn>
-    <control-btn class="back"><control-icon>&nbsp;</control-icon><span i18n>back</span></control-btn>
-    <control-btn class="pause"><span i18n>pause</span><control-icon>&nbsp;</control-icon></control-btn>
-    <control-btn class="forward"><span i18n>forwards</span><control-icon>&nbsp;</control-icon></control-btn>
-    <control-btn class="stop"><span i18n>stop</span><control-icon>&nbsp;</control-icon></control-btn>
   </view-row>
   <view-footer>
     <span class="copy">© 2018,&nbsp;</span><copy-block i18n>copy_block</copy-block>
