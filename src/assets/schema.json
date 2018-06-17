@@ -168,53 +168,172 @@
           ]
         },
         {
-          "id": "INSERT_NODE",
+          "id": "INSERT_TREE",
           "args":"(Current,  New_Elem)",
           "instructions": [
             {
               "comment-text": "Якщо поточний елемент дорівнює NULL",
-              "comment-audio": "/assets/audio/INSERT_NODE_00.mp3",
+              "comment-audio": "",
               "code": "<span class=\"blue\">if</span> Current = NULL <span class=\"blue\">then</span>"
             },
             {
-              "comment-text": "Повернути новий елемент",
+              "comment-text": "Вставка нового узла как листа",
               "comment-audio": "/assets/audio/INSERT_NODE_01.mp3",
               "code": "&nbsp;&nbsp;&nbsp;<span class=\"blue\">return</span>  New_Elem"
             },
             {
-              "comment-text": "Якщо новий елемент більше поточного",
-              "comment-audio": "/assets/audio/INSERT_NODE_02.mp3",
-              "code": "<span class=\"blue\">if</span> <span class=\"grey\">data</span>(New_Elem) < <span class=\"grey\">data</span>(Current) <span class=\"blue\">then</span>"
-            },
-            {
-              "comment-text": "Рекурсивний виклик функції Insert_Node для лівого піддерева",
-              "comment-audio": "audio/Matt Skyer - Our Galaxy.mp3",
-              "code": "&nbsp;&nbsp;&nbsp;<span class=\"grey\">left</span>(Current) <- <span class=\"blue\">call</span> Insert_Node(<span class=\"blue\">left</span>(Current), New_Elem)"
-            },
-            {
-              "comment-text": "Виконується правий поворот поточного піддрерва",
+              "comment-text": "Определение будет ли новый узел вставлен в текущею позицию. Если да, то рекурсивная вставка в корень этого поддерева методом  Insert_Root(). Если нет, то продолжаем спуск по дереву текущим методом",
               "comment-audio": "",
-              "code": "&nbsp;&nbsp;&nbsp;Current <- <span class=\"blue\">call</span> Rotation_R(Current)"
+              "code": "<span class='blue'>if</span> <span class='red'>call</span> <strong>random</strong>() * <strong>N</strong>(<em>Current</em>) < <span class='red'>1.0</span> <span class='blue'>then</span>"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<span class='grey'>Current</span> <- <span class='red'>call</span> <strong>INSERT_ROOT</strong>(<em>Current</em>, <em>New_Elem</em>)"
             },
             {
               "comment-text": "якщо",
               "comment-audio": "",
-              "code": "else"
+              "code": "<span class='blue'>else</span>"
             },
             {
-              "comment-text": "Рекурсивний виклик функції Insert_Node для правого піддерева",
+              "comment-text": "Рекурсивний виклик функції INSERT_TREE",
               "comment-audio": "",
-              "code": "&nbsp;&nbsp;&nbsp;<span class=\"grey\">right</span>(Current) <- <span class=\"blue\">call</span> Insert_Node(<span class=\"grey\">right</span>(Current), New_Elem)"
+              "code": "&nbsp;&nbsp;&nbsp;<span class='grey'>right</span>(<em>Current</em>)  <- <pan class='red'>call</span> <strong>INSERT_TREE</strong> (<span class='grey'>right</span>(<em>Current</em>),  <em>New_Elem</em>)"
             },
             {
-              "comment-text": "Виконується лівий поворот поточного піддрерва",
+              "comment-text": "",
               "comment-audio": "",
-              "code": "&nbsp;&nbsp;&nbsp;Current <- <span class=\"blue\">call</span> Rotation_L(Current)"
+              "code": "<strong>N</strong>(<em>Current</em>)   <strong>N</strong>(<em>Current</em>) + <span class='red'>1</span>"
             },
             {
               "comment-text": "Повертається поточне піддерево",
               "comment-audio": "",
               "code": "<span class=\"blue\">return</span> Current"
+            }
+          ]
+        },
+        {
+          "id": "INSERT_ROOT",
+          "args":"(Current,  New_Elem)",
+          "instructions": [
+            {
+              "comment-text": "Якщо поточний елемент дорівнює NULL",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">if</span> Current = NULL <span class=\"blue\">then</span>"
+            },
+            {
+              "comment-text": "Сначала вставляем новый узел как лист и завершаем спуск по дереву",
+              "comment-audio": "/assets/audio/INSERT_NODE_01.mp3",
+              "code": "&nbsp;&nbsp;&nbsp;<span class=\"blue\">return</span>  New_Elem"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "<span class='blue'>if</span> <span class='grey'>data</span>(New_Elem) < <span class='grey'>data</span>(Current) then"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<span class='grey'>left</span>(Current) <- <span class='red'>call</span> <strong>INSERT_ROOT</strong>(<em><span class='grey'>left</span>(Current)</em>, <em>New_Elem</em>)"
+            },
+            {
+              "comment-text": "Перед ротацией вправо нужно у текущего узла изменить кол-во узлов в его дереве (убрать левую ветку)",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<span class='grey'>N</span>(Current) <- <span class='grey'>N</span>(Current) - <span class='grey'>N</span>(left(Current))"
+            },
+            {
+              "comment-text": "Пересчитать кол-во узлов для нового правого потомка текущего узла",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<strong>N</strong>(<span class='grey'>right</span></(Current)) <- <span class='red'>call</span> <strong>Count</strong>(<em><span class='grey'>right</span></em>(<em>Current</em>))"
+            },
+            {
+              "comment-text": "якщо",
+              "comment-audio": "",
+              "code": "<span class='blue'>else</span>"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<span class='grey'>right</span>(Current) <- <span class='red'>call</span> <strong>INSERT_ROOT</strong>(<em>right(Current)</em>, <em>New_Elem</em>)"
+            },
+            {
+              "comment-text": "Перед ротацией влево изменить кол-во узлов в дереве текущего узла (убрать правую ветку)",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;	<span class='grey'>N</span>(Current) <- <span class='grey'>N</span>(Current) - <span class='grey'>N</span>(right(Current))"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;	<span class='grey'>Current</span> <- <span class='red'>call</span> <strong>ROTATION_L</strong>(<em>Current</em>)"
+            },            {
+              "comment-text": "Пересчитать кол-во узлов для нового левого потомка текущего узла",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;	<span class='grey'>N</span>(<strong>left</strong>(<em>Current</em>)) <- <span class='red'>call</span> <strong>Count</strong>(<em><span class'grey'>left</span>(Current)</em>)"
+            },
+            {
+              "comment-text": "Повертається поточне піддерево",
+              "comment-audio": "",
+              "code": "<span class=\"blue\">return</span> Current"
+            }
+          ]
+        },
+        {
+          "id": "COUNT",
+          "args":"(Current)",
+          "instructions": [
+            {
+              "comment-text": "Метод подсчета узлов в поддереве",
+              "comment-audio": "",
+              "code": "<span class='blue'>if</span> <span class='grey'>left</span>(Current) ≠ NULL <span class='blue'>then</",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<span class='blue'>if</span> <span class='grey'>right</span>(Current) ≠ NULL <span class='blue'>then</span>",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N(Current) <- N(left(Current)) + N(right(Current))",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<span class='blue'>else</span>",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N(Current) <- N(left(Current))  ",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "<span class='blue'>else</span>",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;<span class='blue'>if</span> <span class='grey'>right</span>(Current) ≠ NULL then",
+              "action": "setNewElem"
+            },            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='blue'>if</span> <span class='grey'>right</span>(Current) ≠ NULL then",
+              "action": "setNewElem"
+            },
+            {
+              "comment-text": "",
+              "comment-audio": "",
+              "code": "return N(Current) <- N(Current) + 1",
+              "action": "setNewElem"
             }
           ]
         },

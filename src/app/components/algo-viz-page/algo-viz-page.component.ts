@@ -127,6 +127,10 @@ export class AlgoVizPageComponent implements OnInit  {
     }
   }
 
+  updateAudio(): void {
+
+  }
+
   callDialogWindow(): void {
     this.dialogWindowService.msg = this.translate.data['ERROR'];
     this.dialogWindowService.call_showWindow();
@@ -198,8 +202,9 @@ export class AlgoVizPageComponent implements OnInit  {
       updateAudio: function(sourceUrl) {
        //
         $('audio.audio-comment').empty();
-        const $source = $('<source/>')
+        const $source = $('<source/>');
         $source.attr('src', sourceUrl).appendTo('audio.audio-comment');
+        self.algovizEngineService.currentInstructionAudio = sourceUrl;
       },
       updateBST: function(tree: object, bst: object[], levelNumber: string, nodeNumber: string) {
         if (tree === null) {
@@ -210,8 +215,9 @@ export class AlgoVizPageComponent implements OnInit  {
         // let node_number = 0;
         console.log(self.algovizEngineService.animation[self.currentAnimationStep]['BST']);
         const audioURL = self.algovizEngineService.animation[self.currentAnimationStep]['commentAudio'];
+        self.algovizEngineService.currentInstructionAudio = audioURL;
         if (audioURL !== '') {
-          app.updateAudio(audioURL);
+          // app.updateAudio(audioURL);
         }
         _BST.push({display: 'block', className: level_number, nodeValue: tree['value']});
         app.updateBST(tree['node_left'], _BST, level_number, '_0');

@@ -45,7 +45,7 @@ export class BstNonBalancingAdd {
     }
   }
 
-  _insertKeyFrame (data: any[]) {
+  insertKeyFrame (data: any[]) {
     const keyFrame = {
                   id: data[0],
                 args: data[1],
@@ -60,18 +60,14 @@ export class BstNonBalancingAdd {
     this.algovizEngineService.animation.push(keyFrame);
   }
 
-  insertKeyFrame(keyFrame: object): void {
-    this.algovizEngineService.animation.push(keyFrame);
-  }
-
   INSERT_BST(itemValue: number, className: string): void {
     const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][0]['args'];
     const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][0]['instructions'];
     const NewElem = BstNonBalancingAdd.createNewNode(itemValue, className, null, null);
     // додавання ключового кадру
-    this._insertKeyFrame(['INSERT_BST', args, [className], 0, 0, instructions[0], ['updateBST']]);
+    this.insertKeyFrame(['INSERT_BST', args, [className], 0, 0, instructions[0], ['updateBST']]);
     // додавання ключового кадру
-    this._insertKeyFrame(['INSERT_BST', args, [NewElem.className], 0, 1, instructions[1], ['updateBST'] ]);
+    this.insertKeyFrame(['INSERT_BST', args, [NewElem.className], 0, 1, instructions[1], ['updateBST'] ]);
     this.Root = this.INSERT_NODE(this.Root, NewElem);
   }
 
@@ -80,24 +76,24 @@ export class BstNonBalancingAdd {
     const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][1]['instructions'];
     if (Current === null) {
       // додавання ключового кадру
-      this._insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 0, instructions[0], []]);
+      this.insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 0, instructions[0], []]);
       // додавання ключового кадру
-      this._insertKeyFrame([ 'INSERT_NODE', args, [NewElem.className], 1, 1, instructions[1], ['updateBST']]);
+      this.insertKeyFrame([ 'INSERT_NODE', args, [NewElem.className], 1, 1, instructions[1], ['updateBST']]);
       return  NewElem;
     }
     if (NewElem.value < Current.value) {
       // додавання ключового кадру
-      this._insertKeyFrame(['INSERT_NODE', args, [NewElem.className, Current.className], 1, 3, instructions[3], ['updateBST']]);
+      this.insertKeyFrame(['INSERT_NODE', args, [NewElem.className, Current.className], 1, 3, instructions[3], ['updateBST']]);
       // додавання ключового кадру
-      this._insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 4, instructions[4], ['updateBST']]);
+      this.insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 4, instructions[4], ['updateBST']]);
       Current.node_left = this.INSERT_NODE(Current.node_left, NewElem);
       Current = this.ROTATION_R(Current);
     } else {
       // додавання ключового кадру
-      this._insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 6, instructions[6], ['updateBST']]);
+      this.insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 6, instructions[6], ['updateBST']]);
       Current.node_right = this.INSERT_NODE(Current.node_right, NewElem);
       // додавання ключового кадру
-      this._insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 7, instructions[7], ['updateBST']]);
+      this.insertKeyFrame(['INSERT_NODE', args, [NewElem.className], 1, 7, instructions[7], ['updateBST']]);
       Current = this.ROTATION_L(Current);
     }
     return Current;
@@ -107,7 +103,7 @@ export class BstNonBalancingAdd {
     const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][2]['args'];
     const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][2]['instructions'];
     // додавання ключового кадру
-    this._insertKeyFrame(['ROTATION_R', args, [Current.className], 2, 0, instructions[0], ['updateBST']]);
+    this.insertKeyFrame(['ROTATION_R', args, [Current.className], 2, 0, instructions[0], ['updateBST']]);
     const Temp =  Current.node_left;
     Current.node_left = Temp.node_right;
     Temp.node_right = Current;
@@ -118,7 +114,7 @@ export class BstNonBalancingAdd {
   ROTATION_L(Current: INode): INode {
     const args = this.schema.data['schema']['bst_non_balancing_add']['procedures'][3]['args'];
     const instructions = this.schema.data['schema']['bst_non_balancing_add']['procedures'][3]['instructions'];
-    this._insertKeyFrame(['ROTATION_L', args, [Current.className], 3, 0, instructions[0],  ['updateBST']]);
+    this.insertKeyFrame(['ROTATION_L', args, [Current.className], 3, 0, instructions[0],  ['updateBST']]);
     const Temp =  Current.node_right;
     Current.node_right = Temp.node_left;
     Temp.node_left = Current;
