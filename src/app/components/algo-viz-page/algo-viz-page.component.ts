@@ -206,10 +206,24 @@ export class AlgoVizPageComponent implements OnInit  {
         $source.attr('src', sourceUrl).appendTo('audio.audio-comment');
         self.algovizEngineService.currentInstructionAudio = sourceUrl;
       },
+      buildBST: function(node, type, level){
+        let level_number = level;
+        if (node === null) {
+          return;
+        } else {
+          level_number++;
+
+          $('#bst-container')
+            .append('<div style=\'display: block; position: absolute\; top:' + (level_number * 10) + 'px;left:' + (level_number * 10) + 'px;\' class="' + level_number + ' ' + type + '">' + node.value + '</div>')
+            app.buildBST(node.node_left, 'left', level_number);
+            app.buildBST(node.node_right, 'right', level_number);
+        }
+      },
       updateBST: function(tree: object, bst: object[], levelNumber: string, nodeNumber: string) {
         if (tree === null) {
           return;
         }
+        // app.buildBST(tree);
         const _BST = bst;
         const level_number = levelNumber + '_0';
         // let node_number = 0;
@@ -241,9 +255,11 @@ export class AlgoVizPageComponent implements OnInit  {
         }
         //
         const commands = self.algovizEngineService.animation[self.currentAnimationStep]['commands'];
+        $('#bst-container').empty();
+        app.buildBST(self.algovizEngineService.animation[self.currentAnimationStep]['BST'], 'root', 0);
         if (commands.length > 0 ) {
           if (commands.indexOf('updateBST') !== -1) {
-            app.updateBST(self.algovizEngineService.animation[self.currentAnimationStep]['BST'], [], '', '_0');
+            // app.updateBST(self.algovizEngineService.animation[self.currentAnimationStep]['BST'], [], '', '_0');
           }
         }
       }
